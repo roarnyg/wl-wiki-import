@@ -38,6 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /* Instantiate the singleton, stash it in a global and add hooks. IOK 2018-02-07 */
 require_once("Litteraturnett.class.php");
+require_once("acf_fields.php");
 global $Litteraturnett;
 $Litteraturnett = Litteraturnett::instance();
 register_activation_hook(__FILE__,array($Litteraturnett,'activate'));

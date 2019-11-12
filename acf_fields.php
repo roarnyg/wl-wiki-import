@@ -1,3 +1,4 @@
+<?php
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
@@ -528,15 +529,25 @@ acf_add_local_field_group(array(
             'maxlength' => '',
         ),
     ),
+
     'location' => array(
-        array(
-            array(
-                'param' => 'post_type',
-                'operator' => '==',
-                'value' => 'post',
-            ),
-        ),
-    ),
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'post',
+			),
+		),
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'author',
+			),
+		),
+	),
+
+
     'menu_order' => 0,
     'position' => 'normal',
     'style' => 'default',
