@@ -1,0 +1,31 @@
+ISSUES
+1. Avia-verktøyet virker ikke med Gutenberg. Risiko ved oppdatering. SVG slettes i codeblocks.
+
+STATUS
+1. Sett med ACF-felter, "Wiki Author"
+2. Koblet til "Post".
+3. Men url "/forfattere/" er koblet til visningen, med filtrering. Er en vanlig side, med shortcode
+
+Hele "Post" er endret til å være forfatter-spesifikt. Ekstra kategori "Wiki category groups"
+
+Plugin "Wiki API import"
+
+CRON
+author_subscription_daily_event
+wiki_cron_daily_event 
+
+DATABASER
+ingenting
+
+PLAN:
+
+1. Importer ACF-feltene rett inn i plugin. Krev at ACF er installert.
+2. Ny custom posttype for "Author"
+3. Lag støtte for denne på visningssiden "/forfattere/". 
+
+KART:
+
+* Ser ut å være en relativ enkel widget faktisk , men svært uklart hvor SVG'en kommer *fra*. Style.css og js-filen har koden som aktiverer og skifter.
+* Kartet ligger i sidens postmeta _aviaLayoutBuilderCleanData. DVS at SVG'en i front-end i nyere versjoner av wordpress har *slettet svg*en
+* FIX: Lag shortcode.
+
