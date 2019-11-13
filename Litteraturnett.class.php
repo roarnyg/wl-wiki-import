@@ -90,6 +90,12 @@ class Litteraturnett {
 				'items_list_navigation' => __( 'Author list navigation', 'litteraturnett' ),
 				'filter_items_list'     => __( 'Filter authors list', 'litteraturnett' ),
 				);
+                $rewrite = array(
+                               'slug'                  => 'writer',
+                               'with_front'            => false,
+                               'pages'                 => true,
+                               'feeds'                 => true);
+
 		$args = array(
 				'label'                 => __( 'Author', 'litteraturnett' ),
 				'description'           => __( 'Authors', 'litteraturnett' ),
@@ -109,6 +115,7 @@ class Litteraturnett {
 				'exclude_from_search'   => false,
 				'publicly_queryable'    => true,
                                 'query_var' => 'writer',
+                                'rewrite' => $rewrite,
 				'capability_type'       => 'post',
 				'show_in_rest'          => true,
 			     );
