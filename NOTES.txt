@@ -29,3 +29,16 @@ KART:
 * Kartet ligger i sidens postmeta _aviaLayoutBuilderCleanData. DVS at SVG'en i front-end i nyere versjoner av wordpress har *slettet svg*en
 * FIX: Lag shortcode.
 
+
+CUSTOM POST TYPE:
+ Krever å save rewrite regler
+ Ekisterende sider kommer frem men *ikke* med rewrite. Droppe rewrite? Da bør også eksisterende URL'er virke
+
+"Forfatter":
+* Term taxonomy id: 7 "Forfatter"
+update `wp_term_relationships` o join wp_posts p on (p.id=o.object_id) 
+set p.post_type='author'
+WHERE `term_taxonomy_id` = 7 and p.post_type='post'
+
+  --- og så alle som har post_type post men parent som er author. Dette i activation. Revers (enkel) i Deactivate.
+

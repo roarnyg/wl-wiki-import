@@ -58,55 +58,61 @@ class Litteraturnett {
 		add_action('admin_notices', function() use ($notice) { echo "<div class='notice notice-info is-dismissible'><p>$notice</p></div>"; });
 	}
 
+
+	// Register Custom Post Type
 	public function custom_post_types() {
 		$labels = array(
 				'name'                  => _x( 'Authors', 'Post Type General Name', 'litteraturnett' ),
 				'singular_name'         => _x( 'Author', 'Post Type Singular Name', 'litteraturnett' ),
 				'menu_name'             => __( 'Authors', 'litteraturnett' ),
-				'name_admin_bar'        => __( 'Authors', 'litteraturnett' ),
+				'name_admin_bar'        => __( 'Author', 'litteraturnett' ),
 				'archives'              => __( 'Author Archives', 'litteraturnett' ),
+				'attributes'            => __( 'Author Attributes', 'litteraturnett' ),
+				'parent_item_colon'     => __( 'Parent Item:', 'litteraturnett' ),
 				'all_items'             => __( 'All Authors', 'litteraturnett' ),
 				'add_new_item'          => __( 'Add New Author', 'litteraturnett' ),
 				'add_new'               => __( 'Add New', 'litteraturnett' ),
 				'new_item'              => __( 'New Author', 'litteraturnett' ),
 				'edit_item'             => __( 'Edit Author', 'litteraturnett' ),
 				'update_item'           => __( 'Update Author', 'litteraturnett' ),
-				'view_item'             => __( 'View Autho', 'litteraturnett' ),
-				'search_items'          => __( 'Search Author', 'litteraturnett' ),
+				'view_item'             => __( 'View Author', 'litteraturnett' ),
+				'view_items'            => __( 'View Authors', 'litteraturnett' ),
+				'search_items'          => __( 'Search Authors', 'litteraturnett' ),
 				'not_found'             => __( 'Not found', 'litteraturnett' ),
 				'not_found_in_trash'    => __( 'Not found in Trash', 'litteraturnett' ),
-				'items_list'            => __( 'Author list', 'litteraturnett' ),
+				'featured_image'        => __( 'Featured Image', 'litteraturnett' ),
+				'set_featured_image'    => __( 'Set featured image', 'litteraturnett' ),
+				'remove_featured_image' => __( 'Remove featured image', 'litteraturnett' ),
+				'use_featured_image'    => __( 'Use as featured image', 'litteraturnett' ),
+				'insert_into_item'      => __( 'Insert into item', 'litteraturnett' ),
+				'uploaded_to_this_item' => __( 'Uploaded to this item', 'litteraturnett' ),
+				'items_list'            => __( 'Items list', 'litteraturnett' ),
 				'items_list_navigation' => __( 'Author list navigation', 'litteraturnett' ),
-				'filter_items_list'     => __( 'Filter author list', 'litteraturnett' ),
-				);
-		$rewrite = array(
-				'slug'                  => 'author',
-				'with_front'            => false,
-				'pages'                 => true,
-				'feeds'                 => true,
+				'filter_items_list'     => __( 'Filter authors list', 'litteraturnett' ),
 				);
 		$args = array(
 				'label'                 => __( 'Author', 'litteraturnett' ),
-				'description'           => __( 'Author Description', 'litteraturnett' ),
+				'description'           => __( 'Authors', 'litteraturnett' ),
 				'labels'                => $labels,
-				'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
-				'taxonomies'            => array( 'category', 'post_tag' ),
+				'supports'              => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', 'post-formats' ),
+				'taxonomies'            => array( 'category', 'post_tag', 'group' ),
 				'hierarchical'          => false,
 				'public'                => true,
 				'show_ui'               => true,
 				'show_in_menu'          => true,
-				'menu_position'         => 20,
+				'menu_position'         => 5,
 				'menu_icon'             => 'dashicons-admin-post',
 				'show_in_admin_bar'     => true,
 				'show_in_nav_menus'     => true,
 				'can_export'            => true,
-				'has_archive'           => 'author',
+				'has_archive'           => 'writers',
 				'exclude_from_search'   => false,
 				'publicly_queryable'    => true,
-				'rewrite'               => $rewrite,
+                                'query_var' => 'writer',
 				'capability_type'       => 'post',
+				'show_in_rest'          => true,
 			     );
-		register_post_type( 'author', $args );
+                 register_post_type( 'author', $args );
 
 	}
 
