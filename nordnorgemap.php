@@ -1,13 +1,75 @@
 <?php
-
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-add_shortcode('nordland_map','nordland_map_shortcode');
-function nordland_map_shortcode($attrs,$content) {
+add_shortcode("nordnorgemap", function ($atts,$content) {
 ob_start();
 ?>
-<div class="avia_codeblock nor-map" itemprop="text"> <div id="nordNorgeMap" class="main-map">
+<style>
+  .home-map-content{width:520px!important;float: right!important;clear:none!important;margin-top:0!important;}
+  .home-map-content .sub-map{display: none;}
+  .home-map-content .bt-back{position:absolute;right:0;top:0;z-index: 100;cursor: pointer;width:27px;height:22px;background: url(images/bt_back.png) no-repeat;}
+  .home-map-content path{fill:#179CD6!important;cursor: pointer;
+            -webkit-transition: fill  ease-out .3s;
+            -moz-transition: fill  ease-out .3s;
+            -o-transition: fill  ease-out .3s;
+            transition: fill  ease-out .3s;}
+  .home-map-content path.rg2{fill: #3dacdc!important;}
+  .home-map-content path.rg1{fill: #0590cc!important;}
+  .home-map-content path:hover{fill:#ee8080!important;}
+  .nor-map { position: relative }
+  .nor-map .sub-map{display: none;}
+  .nor-map .bt-back{position:absolute;right:0;top:0;z-index: 100;cursor: pointer;width:27px;height:22px;background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAWCAYAAAAxSueLAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTQxMjlCOTJFMDI2MTFFNUFCQTJCRTI3RDcwOTBBMTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTQxMjlCOTNFMDI2MTFFNUFCQTJCRTI3RDcwOTBBMTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxNDEyOUI5MEUwMjYxMUU1QUJBMkJFMjdENzA5MEExNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxNDEyOUI5MUUwMjYxMUU1QUJBMkJFMjdENzA5MEExNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pk4QAvIAAAF7SURBVHjavJZPKARRHMffSkJKkS0Hsm4uTkopNycHQtokTig3pZRyU8pJTsRBilJqxSKh5LAHB5IDNw4unCjEssXn1UyN7b2Zt7OPb30u83vzPjPz/k0ktnQtDDMBMfj2XItAMazfDjccB3VQaCiadWSq7MC5SScmsmkfUQLivFXGRFYQUJ+EKU1tE/pMRUGyMZjR1PZgAD5FDtHJRmDOR9QLaZFjVLJBWNC0lzMuDu8iRLJl3bCieYh9aIc3ETLe2dgBaz6fNuoIf83g+uUbU1fKvbENNqDEp3GTyC9p+RatsB0gspEPKXuBJ/EPkbJLZ+Af/9hV6o7ZFXRCEqo0jU/gDopCyi68M+sMuuAAylRPBuPw7L3IdhV6naWgB14VbZvhFKrzGbPsHMoNFr4UtUbnSInaksnsQj9kNOtN7o+VtmTuETLks8C3oMKWTGYVRjU1uRkk2a7KbclkFp2zTZUWOEJYY+u3QGYeHqBWUZM/PHVwH9TJjwADABzqR6VNzM2CAAAAAElFTkSuQmCC') no-repeat;}
+  .nor-map path{fill:#179CD6!important;cursor: pointer;
+            -webkit-transition: fill  ease-out .3s;
+            -moz-transition: fill  ease-out .3s;
+            -o-transition: fill  ease-out .3s;
+            transition: fill  ease-out .3s;}
+  .nor-map path.rg2{fill: #075c81!important;}
+  .nor-map path.rg1{fill: #0590cc!important;}
+  .nor-map path.rg3{fill: #368bb0!important;}
+  .nor-map path:hover{fill:#ee8080!important;}
+</style>
+<script>
+jQuery(document).ready(function () {
+        if (window.mapInited) return;
+        window.mapInited = 1;
+        console.log("Adding stuff");
+        jQuery(".nor-map path").click(function(){
+            if(jQuery(this).data("url")){
+                window.location.href = jQuery(this).data("url");
+            }
+            var targetMap = jQuery(this).data("target");
+            if(targetMap){
+                jQuery("#nordNorgeMap").fadeOut(400,function(){
+
+                    jQuery("#"+targetMap).fadeIn();
+                });
+            }
+        });
+        jQuery(".nor-map path").click(function(){
+            if(jQuery(this).data("url")){
+                window.location.href = jQuery(this).data("url");
+            }
+            var targetMap = jQuery(this).data("target");
+            if(targetMap){
+                jQuery("#nordNorgeMap").fadeOut(400,function(){
+                                        jQuery("#first-text").hide();
+                                        jQuery("#sec-text").show();
+                    jQuery("#"+targetMap).fadeIn();
+                });
+            }
+        });
+        jQuery(".sub-map .bt-back").click(function(){
+            jQuery(this).parent(".sub-map").fadeOut(400,function(){
+                                jQuery("#first-text").show();
+                                jQuery("#sec-text").hide();
+                jQuery("#nordNorgeMap").fadeIn();
+            });
+        });
+    });
+</script>
+<div class="nor-map" itemprop="text"> <div id="nordNorgeMap" class="main-map">
 	<svg version="1.1" id="Layer_1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="520px" height="428px" viewBox="0 -0.167 520 428" enable-background="new 0 -0.167 520 428" xml:space="preserve">
 		<g>
 			<path class="rg1" data-target="finnmarkMap" d="M517.483,90.806c-2.998-6.286-7.52-8.49-7.52-3.666c0,4.371-4.404,2.868-6.323-2.157
@@ -2486,6 +2548,6 @@ ob_start();
 </svg>
 </div>
 </div>
-<?php 
- return ob_get_clean();
-}
+<?php
+return ob_get_clean();
+});
