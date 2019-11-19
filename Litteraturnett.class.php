@@ -37,6 +37,8 @@ class Litteraturnett {
 
 	public function init () {
 		$this->custom_post_types();
+
+
 	}
 	public function plugins_loaded () {
 		$ok = load_plugin_textdomain('litteraturnett', false, basename( dirname( __FILE__ ) ) . "/languages");
@@ -183,9 +185,20 @@ class Litteraturnett {
 		// Options
 		$default = array();
 		add_option('litteraturnett_options',$default,false);
-	}
+                // This is only for the first versions IOK 2019-11-19
+                // "Promote" all posts of category "Forfatter" to the 'author' custom post type.
+		global $wpdb;
+                $catid = get_cat_ID('Forfatter');
+                if (!is_wp_error($catid) && $catid) {
+                   $q = "update `{$wpdb->prefix}term_relationships` o join `{$wpdb->prefix}posts` p on (p.id=o.object_id) set p.post_type='author' WHERE `term_taxonomy_id` = %d and p.post_type='post'";
+                   $query = $wpdb->prepare($q,$catid);
+                   $wpdb->query($query);
+                }
 
+	}
 	public static  function deactivate () {
+                global $wpdb;
+                $wpdb->query("UPDATE {$wpdb->prefix}posts SET post_type='post' WHERE post_type='author'");
 	}
 	public static function uninstall() {
 	}
