@@ -42,3 +42,7 @@ WHERE `term_taxonomy_id` = 7 and p.post_type='post'
 
   --- og så alle som har post_type post men parent som er author. Dette i activation. Revers (enkel) i Deactivate.
 
+
+DEPENDENCIES:
+  * ACF
+  * This, for the 'latest search': search-tracking
