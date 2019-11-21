@@ -37,9 +37,12 @@ class Litteraturnett {
 
 	public function init () {
 		$this->custom_post_types();
-
-
+                $this->add_shortcodes();
 	}
+        public function add_shortcodes() {
+                LitteraturnettAuthorShortcode::add();
+        }
+      
 	public function plugins_loaded () {
 		$ok = load_plugin_textdomain('litteraturnett', false, basename( dirname( __FILE__ ) ) . "/languages");
 	}

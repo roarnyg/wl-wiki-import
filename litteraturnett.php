@@ -37,8 +37,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /* Instantiate the singleton, stash it in a global and add hooks. IOK 2018-02-07 */
-require_once("Litteraturnett.class.php");
 require_once("LitteraturnettAuthorFields.class.php");
+require_once("LitteraturnettAuthorShortcode.class.php");
+require_once("Litteraturnett.class.php");
 require_once("nordnorgemap.php");
 global $Litteraturnett,$LitteraturnettAuthorFields;
 $Litteraturnett = Litteraturnett::instance();
@@ -52,9 +53,8 @@ if (is_admin()) {
         add_action('admin_menu',array($Litteraturnett,'admin_menu'));
 }
 add_action('init',array($Litteraturnett,'init'));
-add_action( 'plugins_loaded', array($Litteraturnett,'plugins_loaded'));
-
 add_action( 'plugins_loaded', array($LitteraturnettAuthorFields,'plugins_loaded'));
+add_action( 'plugins_loaded', array($Litteraturnett,'plugins_loaded'));
 
 
 ?>
