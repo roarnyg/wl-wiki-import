@@ -39,6 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* Instantiate the singleton, stash it in a global and add hooks. IOK 2018-02-07 */
 require_once("LitteraturnettAuthorFields.class.php");
 require_once("LitteraturnettAuthorShortcode.class.php");
+require_once("LitteraturnettAuthorPageController.class.php");
 require_once("Litteraturnett.class.php");
 require_once("nordnorgemap.php");
 global $Litteraturnett,$LitteraturnettAuthorFields;

@@ -38,7 +38,64 @@ class Litteraturnett {
 	public function init () {
 		$this->custom_post_types();
                 $this->add_shortcodes();
+                $this->add_author_page_actions();
+                add_filter('template_include', array($this,'template_include'),99,1);
 	}
+
+        public function add_author_page_actions() {
+                $page_controller_class = apply_filters('litteraturnett_author_page_controller_class', 'LitteraturnettAuthorPageController');
+                $page_controller =  $page_controller_class::instance();
+                add_action('litteraturnett_author_before_main_content', array($page_controller,'before_main_content'),10);
+                add_action('litteraturnett_author_after_main_content', array($page_controller,'after_main_content'),10);
+                add_action('litteraturnett_before_single_author_summary', array($page_controller,'before_single_author_summary'),10);
+                add_action('litteraturnett_after_single_author_summary', array($page_controller,'author_page_navigation'),9);
+                add_action('litteraturnett_after_single_author_summary', array($page_controller,'after_single_author_summary'),10);
+                add_action('litteraturnett_single_author_summary', array($page_controller,'before_author_page_info'),10);
+                add_action('litteraturnett_single_author_summary', array($page_controller,'author_page_image'),11);
+                add_action('litteraturnett_single_author_summary', array($page_controller,'author_page_detail'),12);
+                add_action('litteraturnett_single_author_summary', array($page_controller,'after_author_page_info'),13);
+
+                add_action('litteraturnett_single_author_content', array($page_controller,'single_author_content'),10);
+
+                add_action('litteraturnett_author_sidebar', array($page_controller,'author_sidebar'),10);
+ 
+                add_action('litteraturnett_author_after_page_wrapper', array($page_controller,'author_taglist'),10);
+                add_action('litteraturnett_author_after_page_wrapper', array($page_controller,'author_related_book'),11);
+                add_action('litteraturnett_author_after_page_wrapper', array($page_controller,'author_comments'),12);
+        }
+
+
+        public function template_include($template) {
+               if (!is_singular('author')) return $template;
+               if ($template) return $template;
+               return dirname(__FILE__) . "/templates/single-author.php";
+        }
+
+        /* Like 'get template part', but defaults to the plugins' template parts */
+        /* Does the work of both get_template_part and locate_template with load=true */
+        public static function get_template_part ($slug,$name=null) {
+            error_log("iverok $slug, $name");
+            do_action( "get_template_part_{$slug}", $slug, $name );
+            $templates = array();
+            $name      = (string) $name;
+            if ( '' !== $name ) {
+                $templates[] = "{$slug}-{$name}.php";
+            }
+
+            $templates[] = "{$slug}.php";
+            do_action( 'get_template_part', $slug, $name, $templates );
+            $default = dirname(__FILE__) . "/templates/" . $templates[0];
+            $found = locate_template($templates,false);
+            error_log("iverok got $default and $found");
+            if (!$found && file_exists($default)) {
+                 $found = $default;
+            }
+            if ($found) {
+                 error_log("iverok loading $found");
+                 load_template($found, false);
+            }
+        }
+
         public function add_shortcodes() {
                 LitteraturnettAuthorShortcode::add();
         }
@@ -128,6 +185,14 @@ class Litteraturnett {
 
 	}
 
+        // Return this installations' wikipedia link 
+        public static function get_wikipedia() {
+           return static::instance()->settings['wikipedia'];
+        }
+        public static function get_wikipedia_api() {
+           return trailingslashit(static::get_wikipedia()) . 'w/api.php';
+        }
+
 	// This is the main options-page for this plugin. The classes VippsLogin and WooLogin adds more options to this screen just to 
 	// keep the option-data local to each class. IOK 2019-10-14
 	public function toolpage () {
@@ -135,7 +200,7 @@ class Litteraturnett {
 			die(__("Insufficient privileges",'litteraturnett'));
 		}
 		$options = get_option('litteraturnett_options'); 
-		$wikis = array('https://nn.wikipedia.org','https://nb.wikipedia.org/');
+		$wikis = array('https://nn.wikipedia.org','https://no.wikipedia.org/');
 		?>
 			<div class='wrap'>
 			<h2><?php _e('Litteraturnett', 'litteraturnett'); ?></h2>
