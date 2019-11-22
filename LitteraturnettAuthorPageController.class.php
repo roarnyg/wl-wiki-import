@@ -83,12 +83,14 @@ class LitteraturnettAuthorPageController {
         if(get_the_post_thumbnail()):?>
             <div class="author-page-image">
                 <?php if ( has_post_thumbnail() ) {
-                    echo get_the_post_thumbnail();
+                    $thumbz = get_the_post_thumbnail();
+                    echo $thumbz;
                     echo '<span class="img-creator"></span><span class="ic-expand"></span>';                                                                     
                     $image_name = "";
                     $file_title = get_post(( get_post_thumbnail_id()) )->post_title;
                     $file_name = basename ( get_attached_file( get_post_thumbnail_id()) );
                     $image_name = $file_title.".".end(explode('.', $file_name)); //This is for get the image file name + extension with special character
+// This depends on local popup code entirely IOK FIXME
                     $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
                     if ( ! empty( $large_image_url[0] ) ) {
                         printf( '<div id="authorImageInfo" class="image-info-popup white-popup mfp-with-anim mfp-hide" data-image-name="%1$s" data-wiki-url="%2$s">
