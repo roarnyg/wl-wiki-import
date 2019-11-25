@@ -66,7 +66,6 @@ class Litteraturnett {
 
 
         public function template_include($template) {
-               error_log("template $template");
                if (!is_singular('author')) return $template;
                if (basename($template) == 'single-author.php') return $template;
                return dirname(__FILE__) . "/templates/single-author.php";
