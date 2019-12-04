@@ -39,12 +39,25 @@ class Litteraturnett {
 		$this->custom_post_types();
                 $this->add_shortcodes();
                 $this->add_author_page_actions();
+                $this->enqueue_styles();
+                $this->enqueue_scripts();
                 add_filter('template_include', array($this,'template_include'),99,1);
 	}
+
+        public function enqueue_styles() {
+            wp_enqueue_style('Litteraturnett', plugins_url( 'css/litteraturnett.css', __FILE__ ), array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/litteraturnett.css'));
+        }
+
+        public function enqueue_scripts() {
+        }
 
         public function add_author_page_actions() {
                 $page_controller_class = apply_filters('litteraturnett_author_page_controller_class', 'LitteraturnettAuthorPageController');
                 $page_controller =  $page_controller_class::instance();
+
+                add_action('litteraturnett_before_single_author', array($page_controller,'before_single_author'));
+                add_action('litteraturnett_after_single_author', array($page_controller,'after_single_author'));
+
                 add_action('litteraturnett_author_before_main_content', array($page_controller,'before_main_content'),10);
                 add_action('litteraturnett_author_after_main_content', array($page_controller,'after_main_content'),10);
                 add_action('litteraturnett_before_single_author_summary', array($page_controller,'before_single_author_summary'),10);

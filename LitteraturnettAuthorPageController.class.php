@@ -38,6 +38,20 @@ class LitteraturnettAuthorPageController {
 
     }
 
+    public function before_single_author () {
+?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <div class="entry-content">
+<?php
+    }
+
+    public function after_single_author() {
+?>
+        </div>
+</article>
+<?php
+    }
+
     // Wrapper  for the main content element. 
     public function before_main_content () {
         ?>
@@ -79,7 +93,7 @@ class LitteraturnettAuthorPageController {
 
 
     public function author_page_image () {
-        $wikiapi = Litteraturnett::get_wikipedia();
+        $wikiapi = Litteraturnett::get_wikipedia_api();
         if(get_the_post_thumbnail()):?>
             <div class="author-page-image">
                 <?php if ( has_post_thumbnail() ) {
@@ -158,10 +172,21 @@ class LitteraturnettAuthorPageController {
 
     }
     public function author_related_book () {
+        global $post;
+        if (!$post) return;
+        $authorName = '';
+        $namedata = '';
+        $disableBookSection = get_field('disable_book_section',$post->ID);
+        if (!$disableBookSection) {
+            $firstName = get_field('book_first_name',$post->ID);
+            $lastName = get_field('book_last_name',$post->ID);
+            $authorName = esc_attr($lastName." ".$firstName); // PM ask for searching by Lastname Firstname . See B-10341
+            $namedata = " data-author='$authorName' ";
+        }
         $containerclass = esc_attr(apply_filters('litteraturnett_author_container_class','container'));
         ?>
             <div class="<?php echo $containerclass;?>">
-            <div id="relatedBook" class='author-page-related-book'></div>
+            <div id="relatedBook" class='author-page-related-book litteraturnett-book-slider wl-bookshelf-slider' <?php echo $namedata; ?>></div>
             </div>
             <?php
     }
