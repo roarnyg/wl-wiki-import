@@ -226,9 +226,13 @@
 
 
     jQuery(document).ready(function() {
+        // Linkify any literal URLs in the author info 
         _addLinkToInfoBox();
+        // For all images in article
         _addIconToImageInfo();
+        // For the main author image
         _getImageInfo();
+        _displayImageInfo();
     })
 
 
