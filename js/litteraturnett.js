@@ -1,5 +1,21 @@
 (function() {
 
+   // Creates popups for the images
+   function _displayImageInfo (){
+        $(".author-page-image>img,.author-page-image>.ic-expand").click(function(){
+            $.magnificPopup.open({
+                mainClass: 'mfp-fade',
+                removalDelay: 500,
+                items: {
+                  src: '#authorImageInfo',
+                  type: 'inline',
+                  midClick: true
+                }
+            });
+        });
+    }
+
+
     // THis annotates all images *except* the main author image
     function _addIconToImageInfo() {
         jQuery(".ic-expand").clone().insertAfter(".thumbinner .thumbcaption p");
@@ -16,6 +32,7 @@
                 var wiki_api_uri = wikiApiUrl + '?action=query&prop=imageinfo&iiprop=extmetadata&format=json&titles=' + encodeURIComponent('Fil:' + aw_filename);
                 var wiki_api_uri2 = wikiApiUrl + '?action=query&prop=imageinfo&iiprop=url&format=json&titles=' + encodeURIComponent('Fil:' + aw_filename);
                 var itemurl = jQuery(this).parent().find('.thumbimage').attr("src");
+
                 jQuery.ajax({
                     type: "GET",
                     dataType: "jsonp",

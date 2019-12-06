@@ -49,6 +49,12 @@ class Litteraturnett {
         }
 
         public function enqueue_scripts() {
+            wp_register_script('litteraturnett', plugins_url( 'js/litteraturnett.js', __FILE__ ), array('jquery'), filemtime( plugin_dir_path( __FILE__ ) . 'js/litteraturnett.js'));
+            wp_localize_script('litteraturnett', 'LitteraturnettSettings',
+                    array()
+                    );
+            wp_enqueue_script('litteraturnett');
+
         }
 
         public function add_author_page_actions() {
