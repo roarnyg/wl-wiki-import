@@ -45,11 +45,13 @@ class Litteraturnett {
 	}
 
         public function enqueue_styles() {
-            wp_enqueue_style('Litteraturnett', plugins_url( 'css/litteraturnett.css', __FILE__ ), array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/litteraturnett.css'));
+            wp_enqueue_style('maginfic-popup', plugins_url( 'css/magnific-popup.css', __FILE__ ), array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/magnific-popup.css'));
+            wp_enqueue_style('Litteraturnett', plugins_url( 'css/litteraturnett.css', __FILE__ ), array('magnific-popup'), filemtime( plugin_dir_path( __FILE__ ) . 'css/litteraturnett.css'));
         }
 
         public function enqueue_scripts() {
-            wp_register_script('litteraturnett', plugins_url( 'js/litteraturnett.js', __FILE__ ), array('jquery'), filemtime( plugin_dir_path( __FILE__ ) . 'js/litteraturnett.js'));
+            wp_enqueue_script('magnific-popup', plugins_url( 'js/jquery.magnific-popup.min.js', __FILE__ ), array('jquery'), filemtime( plugin_dir_path( __FILE__ ) . 'js/jquery.magnific-popup.min.js'));
+            wp_register_script('litteraturnett', plugins_url( 'js/litteraturnett.js', __FILE__ ), array('jquery','magnific-popup'), filemtime( plugin_dir_path( __FILE__ ) . 'js/litteraturnett.js'));
             wp_localize_script('litteraturnett', 'LitteraturnettSettings',
                     array()
                     );

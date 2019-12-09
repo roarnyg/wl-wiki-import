@@ -2,8 +2,8 @@
 
    // Creates popups for the images
    function _displayImageInfo (){
-        $(".author-page-image>img,.author-page-image>.ic-expand").click(function(){
-            $.magnificPopup.open({
+        jQuery(".author-page-image>img,.author-page-image>.ic-expand").click(function(){
+            jQuery.magnificPopup.open({
                 mainClass: 'mfp-fade',
                 removalDelay: 500,
                 items: {
@@ -16,7 +16,7 @@
     }
 
 
-    // THis annotates all images *except* the main author image
+    // THis annotates all images *except* the main author image. The reason is that the images are all hosted at Wikipedia, not sideloaded.
     function _addIconToImageInfo() {
         jQuery(".ic-expand").clone().insertAfter(".thumbinner .thumbcaption p");
         jQuery(".thumbinner").after("<div class='image-info-popup white-popup mfp-with-anim mfp-hide img-box-info'></div>");
@@ -142,13 +142,13 @@
 
     // ADds image information about the main author image to the 'popup' image
     function _getImageInfo() {
-        $("#authorImageInfo").each(function() {
-            var dataImageName = $(this).data("image-name");
-            var wikiApiUrl = $(this).data("wiki-url");
+        jQuery("#authorImageInfo").each(function() {
+            var dataImageName = jQuery(this).data("image-name");
+            var wikiApiUrl = jQuery(this).data("wiki-url");
             if (dataImageName) {
                 dataImageName = encodeURIComponent(dataImageName);
                 var wiki_api_uri = wikiApiUrl + '?action=query&prop=imageinfo&iiprop=extmetadata|comment&format=json&titles=Fil:' + dataImageName;
-                $.ajax({
+                jQuery.ajax({
                     type: "GET",
                     dataType: "jsonp",
                     url: wiki_api_uri,
@@ -165,7 +165,7 @@
                                     var imageInfos = [];
 
                                     if (itemExtraMetaData.Artist !== undefined) {
-                                        $(".author-page-image .img-creator").html("Opphavsperson: " + itemExtraMetaData.Artist.value);
+                                        jQuery(".author-page-image .img-creator").html("Opphavsperson: " + itemExtraMetaData.Artist.value);
                                         imageInfos.push("<strong>Opphavsperson:</strong> " + itemExtraMetaData.Artist.value);
                                     }
 
@@ -197,7 +197,7 @@
                                         imageinfoHtml += "<div class='image-info-permission'>" + itemExtraMetaData.Permission.value + "</div>";
                                     }
 
-                                    $("#imageInfoContent").html(imageinfoHtml);
+                                    jQuery("#imageInfoContent").html(imageinfoHtml);
                                 }
                             }
                         }
@@ -212,15 +212,15 @@
 
     /* Seems to  linkify any literal URLs in the author details box IOK 2019-12-06*/
     function _addLinkToInfoBox() {
-        $('.author-page-detail').each(function() {
+        jQuery('.author-page-detail').each(function() {
             // Get the content
-            var str = $(this).html();
+            var str = jQuery(this).html();
             // Set the regex string
             var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
             // Replace plain text links by hyperlinks
-            var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+            var replaced_text = str.replace(regex, "<a href='jQuery1' target='_blank'>jQuery1</a>");
             // Echo link
-            $(this).html(replaced_text);
+            jQuery(this).html(replaced_text);
         });
     };
 
