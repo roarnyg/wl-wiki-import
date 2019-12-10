@@ -27,7 +27,7 @@
             var parts = myString.split('/');
             var aw_filename = parts[parts.length - 2];
             var aw_filename = decodeURIComponent(aw_filename);
-            var wikiApiUrl = jQuery("#authorImageInfo").data("wiki-url");
+            var wikiApiUrl = LitteraturnettSettings['wikiApiUrl'];
             if (aw_filename) {
                 var wiki_api_uri = wikiApiUrl + '?action=query&prop=imageinfo&iiprop=extmetadata&format=json&titles=' + encodeURIComponent('Fil:' + aw_filename);
                 var wiki_api_uri2 = wikiApiUrl + '?action=query&prop=imageinfo&iiprop=url&format=json&titles=' + encodeURIComponent('Fil:' + aw_filename);
@@ -67,7 +67,7 @@
 
                                     if (itemExtraMetaData.Artist !== undefined) {
 
-                                        imageInfos.push("<strong>Opphavsperson:</strong> " + itemExtraMetaData.Artist.value);
+                                        imageInfos.push("<strong>"+LitteraturnettSettings['sourceperson']+":</strong> " + itemExtraMetaData.Artist.value);
                                     }
                                     if (itemComment !== undefined) {
                                         imageInfos.push(itemComment);
@@ -144,7 +144,7 @@
     function _getImageInfo() {
         jQuery("#authorImageInfo").each(function() {
             var dataImageName = jQuery(this).data("image-name");
-            var wikiApiUrl = jQuery(this).data("wiki-url");
+            var wikiApiUrl = LitteraturnettSettings['wikiApiUrl'];
             if (dataImageName) {
                 dataImageName = encodeURIComponent(dataImageName);
                 var wiki_api_uri = wikiApiUrl + '?action=query&prop=imageinfo&iiprop=extmetadata|comment&format=json&titles=Fil:' + dataImageName;
@@ -165,12 +165,12 @@
                                     var imageInfos = [];
 
                                     if (itemExtraMetaData.Artist !== undefined) {
-                                        jQuery(".author-page-image .img-creator").html("Opphavsperson: " + itemExtraMetaData.Artist.value);
-                                        imageInfos.push("<strong>Opphavsperson:</strong> " + itemExtraMetaData.Artist.value);
+                                        jQuery(".author-page-image .img-creator").html(LitteraturnettSettings['sourceperson']+": " + itemExtraMetaData.Artist.value);
+                                        imageInfos.push("<strong>"+LitteraturnettSettings['sourceperson']+":</strong> " + itemExtraMetaData.Artist.value);
                                     }
 
                                     if (itemExtraMetaData.Credit !== undefined) {
-                                        imageInfos.push("<strong>Kilde:</strong> " + itemExtraMetaData.Credit.value);
+                                        imageInfos.push("<strong>"+LitteraturnettSettings['source']+":</strong> " + itemExtraMetaData.Credit.value);
                                     }
 
                                     if (itemExtraMetaData.Artist == undefined || itemExtraMetaData.Credit == undefined) {

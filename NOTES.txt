@@ -2,17 +2,17 @@ ISSUES
 1. Avia-verktøyet virker ikke med Gutenberg. Risiko ved oppdatering. SVG slettes i codeblocks.
 
 STATUS
-1. Sett med ACF-felter, "Wiki Author"
-2. Koblet til "Post".
-3. Men url "/forfattere/" er koblet til visningen, med filtrering. Er en vanlig side, med shortcode
+DONE 1. Sett med ACF-felter, "Wiki Author"
+DONE 2. Koblet til "Post".
+DONE 3. Men url "/forfattere/" er koblet til visningen, med filtrering. Er en vanlig side, med shortcode
 
-Hele "Post" er endret til å være forfatter-spesifikt. Ekstra kategori "Wiki category groups"
+DONE Hele "Post" er endret til å være forfatter-spesifikt. Ekstra kategori "Wiki category groups"
 
-Plugin "Wiki API import"
+DONE Plugin "Wiki API import"
 
 CRON
 author_subscription_daily_event
-wiki_cron_daily_event 
+DONE wiki_cron_daily_event 
 
 DATABASER
 ingenting
@@ -27,7 +27,7 @@ KART:
 
 * Ser ut å være en relativ enkel widget faktisk , men svært uklart hvor SVG'en kommer *fra*. Style.css og js-filen har koden som aktiverer og skifter.
 * Kartet ligger i sidens postmeta _aviaLayoutBuilderCleanData. DVS at SVG'en i front-end i nyere versjoner av wordpress har *slettet svg*en
-* FIX: Lag shortcode.
+* DONE MEN FORBEDR FIX: Lag shortcode.
 
 
 CUSTOM POST TYPE:
@@ -46,3 +46,4 @@ WHERE `term_taxonomy_id` = 7 and p.post_type='post'
 DEPENDENCIES:
   * ACF
   * This, for the 'latest search': search-tracking
+  * Men den er *også* en netpower-sak.

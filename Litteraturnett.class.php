@@ -83,8 +83,10 @@ class Litteraturnett {
             wp_enqueue_script('magnific-popup', plugins_url( 'js/jquery.magnific-popup.min.js', __FILE__ ), array('jquery'), filemtime( plugin_dir_path( __FILE__ ) . 'js/jquery.magnific-popup.min.js'));
             wp_register_script('litteraturnett', plugins_url( 'js/litteraturnett.js', __FILE__ ), array('jquery','magnific-popup'), filemtime( plugin_dir_path( __FILE__ ) . 'js/litteraturnett.js'));
             wp_localize_script('litteraturnett', 'LitteraturnettSettings',
-                    array()
-                    );
+                    array('sourceperson'=>__('By', 'litteraturnett'),
+                          'source'      =>__('Source', 'litteraturnett'),
+                          'wikiApiUrl'  => $this->get_wikipedia_api()
+                    ));
             wp_enqueue_script('litteraturnett');
 
         }
