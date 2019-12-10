@@ -41,8 +41,38 @@ class Litteraturnett {
                 $this->add_author_page_actions();
                 $this->enqueue_styles();
                 $this->enqueue_scripts();
+                $this->create_topics_hierarchical_taxonomy();
                 add_filter('template_include', array($this,'template_include'),99,1);
 	}
+
+
+
+        public function create_topics_hierarchical_taxonomy() {
+            $labels = array(
+                    'name' => _x( 'Wiki category groups', 'taxonomy general name','litteraturnett' ),
+                    'singular_name' => _x( 'Wiki category group', 'taxonomy singular name','litteraturnett' ),
+                    'search_items' =>  __( 'Search groups' ,'litteraturnett'),
+                    'all_items' => __( 'All groups','litteraturnett' ),
+                    'parent_item' => __( 'Parent group','litteraturnett' ),
+                    'parent_item_colon' => __( 'Parent group:' ,'litteraturnett'),
+                    'edit_item' => __( 'Edit group' ,'litteraturnett'),
+                    'update_item' => __( 'Update group','litteraturnett' ),
+                    'add_new_item' => __( 'Add New group','litteraturnett' ),
+                    'new_item_name' => __( 'New group Name' ,'litteraturnett'),
+                    'menu_name' => __( 'Wiki category groups' ,'litteraturnett'),
+                    );
+            // IOK added 'author' 2019-11-13
+            register_taxonomy('groups',array('post','author'), array(
+                        'hierarchical' => true,
+                        'labels' => $labels,
+                        'show_ui' => true,
+                        'show_admin_column' => true,
+                        'query_var' => true,
+                        'rewrite' => array( 'slug' => 'group' ),
+                        ));
+
+        }
+
 
         public function enqueue_styles() {
             wp_enqueue_style('maginfic-popup', plugins_url( 'css/magnific-popup.css', __FILE__ ), array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/magnific-popup.css'));
@@ -95,7 +125,6 @@ class Litteraturnett {
         /* Like 'get template part', but defaults to the plugins' template parts */
         /* Does the work of both get_template_part and locate_template with load=true */
         public static function get_template_part ($slug,$name=null) {
-            error_log("iverok $slug, $name");
             do_action( "get_template_part_{$slug}", $slug, $name );
             $templates = array();
             $name      = (string) $name;
@@ -107,12 +136,10 @@ class Litteraturnett {
             do_action( 'get_template_part', $slug, $name, $templates );
             $default = dirname(__FILE__) . "/templates/" . $templates[0];
             $found = locate_template($templates,false);
-            error_log("iverok got $default and $found");
             if (!$found && file_exists($default)) {
                  $found = $default;
             }
             if ($found) {
-                 error_log("iverok loading $found");
                  load_template($found, false);
             }
         }
@@ -222,6 +249,8 @@ class Litteraturnett {
 		}
 		$options = get_option('litteraturnett_options'); 
 		$wikis = array('https://nn.wikipedia.org','https://no.wikipedia.org/');
+                $last_updated_page = intval($options['last_updated_page']);
+     
 		?>
 			<div class='wrap'>
 			<h2><?php _e('Litteraturnett', 'litteraturnett'); ?></h2>
@@ -244,6 +273,13 @@ class Litteraturnett {
 			</td>
 			<td><?php _e('Select the Wikipedia you will use as a source for this site.','litteraturnett'); ?></td>
 			</tr>
+
+			<tr>
+			<td><?php _e('Wikipedia Source', 'litteraturnett'); ?></td>
+			<td width=30%>
+                            <?php wp_dropdown_pages(array('post_status'=>'publish,private','selected'=>$last_updated_page, 'echo'=>1, 'show_option_none'=>__('None chosen', 'litteraturnett'), 'name'=>'litteraturnett_options[last_updated_page]')); ?>
+                        </td>
+                        <td><?php _e('Select an (empty! and probably private) page to be used to show last updated authors','litteraturnett'); ?></td>
 
 			</table>
 			<div> <input type="submit" style="float:left" class="button-primary" value="<?php _e('Save Changes') ?>" /> </div>
@@ -270,25 +306,26 @@ class Litteraturnett {
 	}
 
 	// The activation hook will create the session database tables if they do not or if the database has been upgraded. IOK 2019-10-14
-	public function activate () {
-		// Options
-		$default = array();
-		add_option('litteraturnett_options',$default,false);
-                // This is only for the first versions IOK 2019-11-19
-                // "Promote" all posts of category "Forfatter" to the 'author' custom post type.
-		global $wpdb;
-                $catid = get_cat_ID('Forfatter');
-                if (!is_wp_error($catid) && $catid) {
-                   $q = "update `{$wpdb->prefix}term_relationships` o join `{$wpdb->prefix}posts` p on (p.id=o.object_id) set p.post_type='author' WHERE `term_taxonomy_id` = %d and p.post_type='post'";
-                   $query = $wpdb->prepare($q,$catid);
-                   $wpdb->query($query);
-                }
+        public function activate () {
+            // Options
+            $default = array();
+            add_option('litteraturnett_options',$default,false);
+            // This is only for the first versions IOK 2019-11-19
+            // "Promote" all posts of category "Forfatter" to the 'author' custom post type.
+            global $wpdb;
+            $catid = get_cat_ID('Forfatter');
+            if (!is_wp_error($catid) && $catid) {
+                $q = "update `{$wpdb->prefix}term_relationships` o join `{$wpdb->prefix}posts` p on (p.id=o.object_id) set p.post_type='author' WHERE `term_taxonomy_id` = %d and p.post_type='post'";
+                $query = $wpdb->prepare($q,$catid);
+                $wpdb->query($query);
+            }
 
-	}
-	public static  function deactivate () {
-                global $wpdb;
-                $wpdb->query("UPDATE {$wpdb->prefix}posts SET post_type='post' WHERE post_type='author'");
-	}
+        }
+        public static  function deactivate () {
+            global $wpdb;
+            $wpdb->query("UPDATE {$wpdb->prefix}posts SET post_type='post' WHERE post_type='author'");
+            LitteraturnettWikiImport::wiki_deactivation();
+        }
 	public static function uninstall() {
 	}
 

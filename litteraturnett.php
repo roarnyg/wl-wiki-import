@@ -57,5 +57,16 @@ add_action('init',array($Litteraturnett,'init'));
 add_action( 'plugins_loaded', array($LitteraturnettAuthorFields,'plugins_loaded'));
 add_action( 'plugins_loaded', array($Litteraturnett,'plugins_loaded'));
 
+/* This was formerly its own plugin, so it looks a bit different. IOK 2019-12-10 */
+require_once("LitteraturnettWikiImport.class.php");
+global $LitteraturnettWikiImport;
+$LitteraturnettWikiImport = LitteraturnettWikiImport::instance();
 
-?>
+add_action('admin_menu', array($LitteraturnettWikiImport,'wiki_api_admin_default_setup'));
+
+add_action('wp_ajax_wiki_api_import',array($LitteraturnettWikiImport, 'wiki_api_import_action'));
+add_action('wp_ajax_nopriv_wiki_api_import',array($LitteraturnettWikiImport, 'wiki_api_nopriv_import_action'));
+add_action('wp_ajax_wiki_api_search',array($LitteraturnettWikiImport, 'wiki_api_search_search'));
+
+
+add_action('wiki_cron_daily_event',array($LitteraturnettWikiImport, 'wiki_cron_daily_action'));
