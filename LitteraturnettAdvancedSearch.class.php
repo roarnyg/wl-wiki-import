@@ -26,7 +26,6 @@ class LitteraturnettAdvancedSearch {
 
 	}
 
-
 	public function wp_footer (){
 		if (is_search()) {
 			echo "<script type='text/javascript'>jQuery(function(){Site.Search.init();});</script>";
@@ -35,12 +34,16 @@ class LitteraturnettAdvancedSearch {
 
 	//Add search form custom element
 	function custom_search_form($html) {
-		return $html . "\n" . get_advanced_search_form();
+		$parts = explode("</form>", $html,2);
+		$newform = $parts[0] . $this->get_advanced_search_form() . "</form>";
+		if (isset($parts[1])) $newform .= $parts[1];
+		return $newform;
 	}
 
 	function get_advanced_search_form() {
 		ob_start();
-		<label class="hidden-item" for="s"><?php _e("Search") ; ?> </label>
+		?>
+			<label class="hidden-item" for="s"><?php _e("Search") ; ?> </label>
 			<div class="advance-search-container" id="advanceSearchContainer">
 			<a href="#" id="advanceSearchBut"><span class="item-text"><?php _e("Avansert søk",'litteraturnett'); ?></span><span class="ic"></span></a>
 			<div class="advance-search-content" id="advanceSearchContent">
@@ -55,13 +58,13 @@ class LitteraturnettAdvancedSearch {
 			<li>
 			<fieldset>
 			<legend><?php _e("Birthyear",'litteraturnett'); ?></legend>
-			<div class="scroll-box"><?php $this->generate_Option('period','pe','period');?></div>
+			<div class="scroll-box"><?php echo $this->generate_Option('period','pe','period');?></div>
 			</fieldset>
 			</li>
 			<li>
 			<fieldset>
 			<legend><?php _e("Gender",'litteraturnett');?></legend>
-			<div class="scroll-box"><?php $this->generate_Option('gender','gen','gender');?></div>
+			<div class="scroll-box"><?php echo $this->generate_Option('gender','gen','gender');?></div>
 			</fieldset>
 			</li>
 			<li>
@@ -82,12 +85,15 @@ class LitteraturnettAdvancedSearch {
 	function generate_Option($fieldId,$checkboxName,$checkboxIdPrefix){
 		$result ='';
 		$fieldObject = LitteraturnettAuthorFields::get_field_object($fieldId);
-		$currentFieldValue = sanitize_string(@$_GET[$checkboxName]);
+		$currentFieldValue = @$_GET[$checkboxName];
 		$index=0;
 
-		// IOK temporarily removed as I'm not entirely sure why this was done 
+
+
+		// IOK sort areas alphabetically if there are no 'separator' areas (that is, areas with null value. This can be used to group areas.
 		if($fieldId=='municipality') {
-			//	asort($fieldObject["choices"]);
+                   $separators = in_array('', array_values($fieldObject['choices']));
+                   if (!$separators) asort($fieldObject["choices"]);
 		}
 		foreach ($fieldObject["choices"] as $optionKey=>$optionValue) {
 			if($optionValue==""){
@@ -96,12 +102,14 @@ class LitteraturnettAdvancedSearch {
 				}
 				continue;
 			}
-			if(isset( $currentFieldValue) && in_array($optionKey,$currentFieldValue)){
-				$result .='<p><input type="checkbox" name="'.$checkboxName.'[]" value="'.$optionKey.'" id="'.$checkboxIdPrefix.$index.'" checked/> <label for="'.$checkboxIdPrefix.$index.'">'.$optionValue.'</label></p>';
-			}else{
-				$result .='<p><input type="checkbox" name="'.$checkboxName.'[]" value="'.$optionKey.'" id="'.$checkboxIdPrefix.$index.'"/> <label for="'.$checkboxIdPrefix.$index.'">'.$optionValue.'</label></p>';
+
+			if ($fieldId == 'gender') {
+				error_log("option $optionKey - $optionValue");
 			}
+			$checked = isset( $currentFieldValue) && in_array($optionKey,$currentFieldValue) ? ' checked ' : '';
+			$result .='<p><input type="checkbox" name="'.$checkboxName.'[]" value="'.$optionKey.'" id="'.$checkboxIdPrefix.$index.'" ' . $checked. ' /> <label for="'.$checkboxIdPrefix.$index.'">'.$optionValue.'</label></p>';
 			$index++;
+			if ($fieldId == 'gender') error_log("Index $index");
 		}
 		return $result;
 	}
@@ -130,25 +138,52 @@ class LitteraturnettAdvancedSearch {
 	function generate_municipalitySelect( $atts ) {
 		$result = '<label for="municipalitySelect" class="hidden-item">'.__("Choose municipality", 'litteraturnett').'</label>';
 		$result .= '<select class="styled-selectbox municipality-select" id="municipalitySelect">';
-		$result .= generate_municipalityOption();
+		$result .= $this->generate_municipalityOption();
 		$result .= '</select>';
 		return $result;
 	}
+
 	function generate_municipalityOption() {
-		$result ='<option value="">'.__("Choose municipality", 'litteraturnett').'</option>';
-		$municipalityField = LitteraturnettAuthorFields::get_field_object('municipality');
+		$result ='<option value="">'.__("Choose municipality", 'avia_framework').'</option>';
+		$municipalityField = get_field_object('field_568b3b88327a3');
+
+		$choicevalues = array_values($municipalityField["choices"]);
+		$separators = in_array('',$choicevalues);
+
 		if(!is_null($municipalityField)){
-			$municipalityChoice = $municipalityField["choices"];
-			sort($municipalityChoice);
-			foreach ($municipalityChoice as $municipality) {
-				if($municipality=="") continue;
-				if(isset($_GET["mu"]) && $_GET["mu"] == $municipality){
-					$result .='<option value="'.$municipality.'" selected>'.$municipality.'</option>';
-				}else{
-					$result .='<option value="'.$municipality.'">'.$municipality.'</option>';
+			if($separators) {
+				$count = 1;
+				$muLeng  = count($municipalityField["choices"]);
+				foreach ($municipalityField["choices"] as $muKey => $muValue) {
+					if($muValue==""){
+						if($count>1){
+							$result .='</optgroup>';
+						}
+						$result .='<optgroup label="'.$muKey.'">';
+					}else{
+						if(isset($_GET["mu"]) && $_GET["mu"] == $muValue){
+							$result .='<option value="'.$muValue.'" selected>'.$muValue.'</option>';
+						}else{
+							$result .='<option value="'.$muValue.'">'.$muValue.'</option>';
+						}
+					}
+					if($count == $muLeng){
+						$result .='</optgroup>';
+					}
+					$count++;
+				}
+			}else{
+				$municipalityChoice = $municipalityField["choices"];
+				sort($municipalityChoice);
+				foreach ($municipalityChoice as $municipality) {
+					if($municipality=="") continue;
+					if(isset($_GET["mu"]) && $_GET["mu"] == $municipality){
+						$result .='<option value="'.$municipality.'" selected>'.$municipality.'</option>';
+					}else{
+						$result .='<option value="'.$municipality.'">'.$municipality.'</option>';
+					}
 				}
 			}
-
 		}
 		return $result;
 	}

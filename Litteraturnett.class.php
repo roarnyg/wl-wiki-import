@@ -43,8 +43,7 @@ class Litteraturnett {
 		$this->enqueue_scripts();
 		$this->create_topics_hierarchical_taxonomy();
 		add_filter('template_include', array($this,'template_include'),99,1);
-
-		add_action( 'wp_head', array($this,'add_facebook_meta_for_author_post' , 2 ));
+		add_action( 'wp_head', array($this,'add_facebook_meta_for_author_post') , 2 );
 
 
 	}

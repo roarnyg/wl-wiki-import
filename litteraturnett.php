@@ -69,3 +69,11 @@ add_action('wp_ajax_wiki_api_search',array($LitteraturnettWikiImport, 'wiki_api_
 
 
 add_action('wiki_cron_daily_event',array($LitteraturnettWikiImport, 'wiki_cron_daily_action'));
+
+require_once('LitteraturnettAdvancedSearch.class.php');
+global $LitteraturnettAdvancedSearch;
+$LitteraturnettAdvancedSearch = LitteraturnettAdvancedSearch::instance();
+add_action('init',array($LitteraturnettAdvancedSearch,'init'));
+add_action('admin_init',array($LitteraturnettAdvancedSearch,'init'));
+
+
