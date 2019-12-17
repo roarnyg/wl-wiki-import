@@ -40,13 +40,16 @@ class LitteraturnettAuthorShortcode {
             case 'municipality':
                 $pageTitle .= __("municipality", 'litterturnett');
                 $fieldId = 'municipality';
+                break;
             case 'period':
                 $pageTitle .= __("period", 'litteraturnett');
                 $fieldId = 'period';
+                break;
             case 'gerne': // IOK 2019-11-20 wut
             case 'genre':
                 $pageTitle .= __("gerne", 'litteraturnett');
                 $fieldId = 'genre';
+                break;
         }
         $result .='<h1 class="author-title-sort">'.$pageTitle.'</h1>';
 
