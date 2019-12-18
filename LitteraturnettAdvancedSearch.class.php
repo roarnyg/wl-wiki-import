@@ -22,9 +22,14 @@ class LitteraturnettAdvancedSearch {
 		add_shortcode( 'authorFromRegionSelect', array($this,'generate_authorFromRegionSelect' ));
 		add_shortcode( 'municipalitySelect', array($this,'generate_municipalitySelect' ));
 		add_action( 'pre_get_posts', array($this,'filter_search_results' ));
-
-
+                add_action('wp_enqueue_scripts', array($this,'wp_enqueue_scripts'));
 	}
+
+        public function wp_enqueue_scripts () {
+           // Used in the 'advanced search' boxes.
+           wp_enqueue_style( 'style-customScrollbar', plugins_url('css/jquery.mCustomScrollbar.css', __FILE__ ));
+           wp_enqueue_script('jquery-customScrollbar',plugins_url('js/jquery.mCustomScrollbar.concat.min.js', __FILE__),array( 'jquery' ));
+        }
 
 	public function wp_footer (){
 		if (is_search()) {
