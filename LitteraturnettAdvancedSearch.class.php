@@ -17,10 +17,13 @@ class LitteraturnettAdvancedSearch {
 
 	public function init () {
 		add_action('wp_footer', array($this,'wp_footer'));
-		add_filter('get_search_form', array($this,'custom_search_form'));
+
+//		add_filter('get_search_form', array($this,'custom_search_form'));
+
 		// pre_get_search_form to add javascript I guess
 		add_shortcode( 'authorFromRegionSelect', array($this,'generate_authorFromRegionSelect' ));
 		add_shortcode( 'municipalitySelect', array($this,'generate_municipalitySelect' ));
+                add_shortcode('advanced_search_form', array($this, 'advanced_search_form_shortcode'));
 		add_action( 'pre_get_posts', array($this,'filter_search_results' ));
                 add_action('wp_enqueue_scripts', array($this,'wp_enqueue_scripts'));
 	}
@@ -29,13 +32,15 @@ class LitteraturnettAdvancedSearch {
            // Used in the 'advanced search' boxes.
            wp_enqueue_style( 'style-customScrollbar', plugins_url('css/jquery.mCustomScrollbar.css', __FILE__ ));
            wp_enqueue_script('jquery-customScrollbar',plugins_url('js/jquery.mCustomScrollbar.concat.min.js', __FILE__),array( 'jquery' ));
+           wp_enqueue_script('searchlogic',plugins_url('js/searchlogic.js', __FILE__),array( 'jquery' ),  filemtime(dirname(__FILE__) . "/js/searchlogic.js"));
         }
 
 	public function wp_footer (){
-		if (is_search()) {
-			echo "<script type='text/javascript'>jQuery(function(){Site.Search.init();});</script>";
-		}
 	}
+
+        public function advanced_search_form_shortcode ($atts, $content='',$tag='') {
+           return $this->custom_search_form( get_search_form(array('echo'=>false)));
+        }
 
 	//Add search form custom element
 	function custom_search_form($html) {
