@@ -46,6 +46,10 @@ class Litteraturnett {
 		add_action( 'wp_head', array($this,'add_facebook_meta_for_author_post') , 2 );
 
 
+add_action('wp_body_open', function () {
+ //  echo "<div class='site-content'><div class='entry'><div class='entry-content'>" . do_shortcode('[advanced_search_form]') . "</div></div></div>";;
+});
+
 	}
 
 	function add_facebook_meta_for_author_post() {

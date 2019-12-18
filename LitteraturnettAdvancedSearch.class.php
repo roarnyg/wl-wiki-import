@@ -2,6 +2,8 @@
 
 class LitteraturnettAdvancedSearch {
 
+        # If true, *all* search forms will be advanced. Make settings-dependent.
+        public $use_advanced_search_form = 0;
 	protected static $instance = null;
 	// Make field definitions accessible by name instead of field ID
 	protected static $indexedfields = array();
@@ -18,7 +20,7 @@ class LitteraturnettAdvancedSearch {
 	public function init () {
 		add_action('wp_footer', array($this,'wp_footer'));
 
-//		add_filter('get_search_form', array($this,'custom_search_form'));
+		add_filter('get_search_form', array($this,'maybe_get_advanced_search_form'));
 
 		// pre_get_search_form to add javascript I guess
 		add_shortcode( 'authorFromRegionSelect', array($this,'generate_authorFromRegionSelect' ));
@@ -38,9 +40,33 @@ class LitteraturnettAdvancedSearch {
 	public function wp_footer (){
 	}
 
-        public function advanced_search_form_shortcode ($atts, $content='',$tag='') {
-           return $this->custom_search_form( get_search_form(array('echo'=>false)));
+        // Return 1 advanced search form, like for get_search_form()
+        public static function advanced_search_form ($args=false) {
+            $instance = static::instance();
+            $form = $instance->advanced_search_form_shortcode(array(), '', '');
+            if ($args && isset($args['echo']) && $args['echo']) {
+               echo $form;
+            }
+            return $form;
         }
+
+        // By shortcode, make 1 single advanced search form
+        public function advanced_search_form_shortcode ($atts, $content='',$tag='') {
+           $advanced = $this->use_advanced_search_form;
+           $this->use_advanced_search_form = 0;
+           $form = $this->custom_search_form( get_search_form(array('echo'=>false)));
+           $this->use_advanced_search_form = $advanced;
+           return $form;
+        }
+
+
+        // If set, add the 'advanced' search form to all search forms.
+        public function maybe_get_advanced_search_form ($html) {
+           if (! apply_filters('use_advanced_search_form', $this->use_advanced_search_form)) return $html;
+           return $this->custom_search_form($html);
+        }
+
+
 
 	//Add search form custom element
 	function custom_search_form($html) {
@@ -50,7 +76,7 @@ class LitteraturnettAdvancedSearch {
 		return $newform;
 	}
 
-	function get_advanced_search_form() {
+	protected function get_advanced_search_form() {
 		ob_start();
 		?>
 			<label class="hidden-item" for="s"><?php _e("Search") ; ?> </label>
