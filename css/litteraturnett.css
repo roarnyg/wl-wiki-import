@@ -3,7 +3,7 @@
         table.navbox td.navbox-group { 
            word-break: initial; 
         }
-        .author-content .entry .entry-content > * {
+        .single-author .entry .entry-content > * {
            max-width: 100%;
         }
         .author-page-content table td, .author-page-content table th {

@@ -159,7 +159,7 @@ class LitteraturnettAuthorPageController {
         global $post;
         $tagList = wp_get_post_tags($post->ID);
         $tagListHtml = "";
-        $containerclass = esc_attr(apply_filters('litteraturnett_author_container_class','container'));
+        $containerclass = esc_attr(apply_filters('litteraturnett_author_container_class','entry-content'));
         foreach ($tagList as $tag) {
             if($tag->description!=""){
                 $tagListHtml .= '<a href="/tag/'.$tag->slug.'/" rel="tag" data-tag="'.$tag->name.'">'.$tag->description.'</a> | ';
@@ -167,7 +167,7 @@ class LitteraturnettAuthorPageController {
         }
         if($tagListHtml!=""){
             $tagListHtml = substr($tagListHtml, 0, -3); // remove the last seperator
-            echo "<div class='$containerclass author-page-tag'><h2>".__('Tags','litteraturnett')."</h2><div class='author-page-tag-content'>$tagListHtml</div></div>";
+            echo "<div class='entry'><div class='$containerclass author-page-tag'><h2>".__('Tags','litteraturnett')."</h2><div class='author-page-tag-content'>$tagListHtml</div></div></div>";
         }
 
     }
@@ -183,15 +183,17 @@ class LitteraturnettAuthorPageController {
             $authorName = esc_attr($lastName." ".$firstName); // PM ask for searching by Lastname Firstname . See B-10341
             $namedata = " data-author='$authorName' ";
         }
-        $containerclass = esc_attr(apply_filters('litteraturnett_author_container_class','container'));
+        $containerclass = esc_attr(apply_filters('litteraturnett_author_container_class','entry-content'));
         ?>
+            <div class="entry">
             <div class="<?php echo $containerclass;?>">
             <div id="relatedBook" class='author-page-related-book litteraturnett-book-slider wl-bookshelf-slider' <?php echo $namedata; ?>></div>
+            </div>
             </div>
             <?php
     }
     public function author_comments() {
-        $containerclass = esc_attr(apply_filters('litteraturnett_author_container_class','container'));
+        $containerclass = esc_attr(apply_filters('litteraturnett_author_container_class','entry-content'));
         ?>
             <div class="<?php echo $containerclass;?>">
             <div id="authorCommentForm" class="author-conmment-form">
