@@ -95,7 +95,7 @@ add_action('wp_body_open', function () {
 
 
 	public function enqueue_styles() {
-		wp_enqueue_style('maginfic-popup', plugins_url( 'css/magnific-popup.css', __FILE__ ), array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/magnific-popup.css'));
+		wp_enqueue_style('magnific-popup', plugins_url( 'css/magnific-popup.css', __FILE__ ), array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/magnific-popup.css'));
 		wp_enqueue_style('Litteraturnett', plugins_url( 'css/litteraturnett.css', __FILE__ ), array('magnific-popup'), filemtime( plugin_dir_path( __FILE__ ) . 'css/litteraturnett.css'));
 	}
 
@@ -183,7 +183,67 @@ add_action('wp_body_open', function () {
                 add_filter( 'manage_edit-author_sortable_columns', array($this,'np_author_sortable_column' ));
                 add_action( 'pre_get_posts', array($this,'np_author_orderby' ));
                 add_action( 'manage_author_posts_custom_column', array($this,'np_author_column_content'), 10, 2 );
+                add_meta_box( 'wl_wiki_author', __('Wikipedia Import','litteraturnett'), array($this,'add_wl_wiki_author_metabox'), 'author', 'side', 'core' );
 	}
+
+        public function add_wl_wiki_author_metabox () {
+               global $post;
+ $label = __("Update from Wikipedia", 'litteraturnett');
+ $updating = __("Updating...", 'litteraturnett');
+ $pageid = get_field('page_id');
+ $lastupdated = get_field('author_last_updated');
+?>
+<div id="wl-wikipedia-actions" style="overflow:hidden;width: 100%; text-align:center">
+<div id="wl-wikipedia-action" style="margin:0 auto">
+
+<p>Page id <?php echo intval($pageid); ?> Last updated <?php echo esc_html($lastupdated) ;?></p>
+<a href="javascript:updateFromWikipedia(<?php echo intval($pageid); ?>)" accesskey="p" tabindex="5" class="button-primary wikipedia-import-button"><?php echo $label; ?></a>
+<p class="wikiimportresult"></p>
+</div></div>
+<script>
+ var wlimportinprogress = 0;
+ function updateFromWikipedia(pageid) {
+   if (!pageid) {
+     jQuery('.wikiimportresult').html('');
+     alert("No page id - cannot import!");
+     return false;
+   }
+   function reset () {
+       wlimportinprogress = 0;
+       jQuery('.wikipedia-import-button').removeClass('inactive');
+       jQuery('.wikipedia-import-button').html(<?php echo json_encode($label); ?>);
+   } 
+   if (wlimportinprogress) return;
+   jQuery('.wikiimportresult').html('');
+   wlimportinprogress = 1;
+   jQuery('.wikipedia-import-button').addClass('inactive');
+   jQuery('.wikipedia-import-button').html(<?php echo json_encode($updating); ?>);
+   console.log("Updating " + pageid);
+   var dataToImport = [pageid];
+   jQuery.ajax({
+                url: ajaxurl,
+                data: {
+                    'action':'wiki_api_import',
+                    'data' : dataToImport
+                },
+                success:function(dataStr) {
+                    jQuery('.wikiimportresult').html(dataStr);
+                    reset();
+                    window.location.reload();
+                },
+                error: function(errorThrown){
+                    console.log(errorThrown);
+                    jQuery('.wikiimportresult').html("Error: " . errorThrown);
+                    reset();
+                }
+            });
+ } 
+</script>
+
+<?php
+            return 1;
+        }
+
 	public function admin_enqueue_scripts ($suffix) {
 		// Nothing yet
 	}
