@@ -1,6 +1,25 @@
 
+        /* This fixes issues with the underscores templates */
         table.navbox td.navbox-group { 
            word-break: initial; 
+        }
+        .author-content .entry .entry-content > * {
+           max-width: 100%;
+        }
+        .author-page-content table td, .author-page-content table th {
+           border:0;
+        }
+        .author-content .author-page-detail h1::before {
+          content:'';
+          height: 0;
+        }
+        .author-content .author-page-detail h2::before {
+          content:'';
+          height: 0;
+        }
+        .author-content .author-page-detail h1{
+          margin-top: 0;
+          line-height:0;
         }
  
 	/* fix bug Enfold template */
@@ -24,21 +43,13 @@
 	/*End-Magnific popup/*
 
 	/*Search Banner*/
-	#main>#layer_slider_1{position: absolute;z-index: 10;left:0;right:0;top:0;box-shadow: none;border: 0;}
-	#main>#searchform{position: relative;z-index: 20;padding-top: 72px;min-height:310px;background-size: cover;text-align: center;}
-	#main>#searchform>div{display: inline-block;width:100%;max-width: 1210px;padding: 0 10px;}	
-	#main>#searchform input[type=text]{height:100px;border:0;padding:20px 100px 20px 60px;font-size: 3em;color: #5098d2;font-family: 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 300;}
-	#main>#searchform input[type=text]::-webkit-input-placeholder {color: #adcbe9;font-weight: 300;}
-	#main>#searchform input[type=text]:-moz-placeholder { /* Firefox 18- */color: #adcbe9;font-weight: 300;}
-	#main>#searchform input[type=text]::-moz-placeholder {  /* Firefox 19+ */color: #adcbe9;font-weight: 300;}
-	#main>#searchform #searchsubmit{width:100px;height:100px;background: url("images/ic_search.png") center center no-repeat #fff;overflow: hidden;text-indent: 120px;right:10px;}
 
 	.advance-search-container{display: none;}
-	#main>#searchform .advance-search-container{display: block;margin-top:10px;text-align: left;border: 1px solid transparent;position: relative;}
-	#main>#searchform .advance-search-container.active{background-color: #fff;border: 1px solid #009ce3;}
-	#main>#searchform .advance-search-container>a{float: right;font-size: 1.5em;padding:0 24px;line-height: 2;border: 1px solid #009ce3;background-color: #fff;font-weight: 300;color:#005d88;}
-	#main>#searchform .advance-search-container.active>a{border: 1px solid transparent;position: absolute;right: 0;}
-	#main>#searchform .advance-search-container .ic{width: 30px;height:15px;display: inline-block;background: url(images/ic_blueArrowUp.png) center center no-repeat #fff;	margin-left:10px;
+	.advance-search-container{display: block;margin-top:10px;text-align: left;border: 1px solid transparent;position: relative;}
+	.advance-search-container.active{background-color: #fff;border: 1px solid #009ce3;}
+	.advance-search-container>a{float: right;font-size: 1.5em;padding:0 24px;line-height: 2;border: 1px solid #009ce3;background-color: #fff;font-weight: 300;color:#005d88;}
+	.advance-search-container.active>a{border: 1px solid transparent;position: absolute;right: 0;}
+	.advance-search-container .ic{width: 30px;height:15px;display: inline-block;background: url(images/ic_blueArrowUp.png) center center no-repeat #fff;	margin-left:10px;
 	    -webkit-transform: rotate(180deg);
 	    -moz-transform: rotate(180deg);
 	    -ms-transform: rotate(180deg);
@@ -48,36 +59,36 @@
 		-moz-transition: all 500ms ease-out .1s;
 		-o-transition: all 500ms ease-out .1s;
 		transition: all 500ms ease-out .1s;}
-	#main>#searchform .advance-search-container.active a .ic{
+	.advance-search-container.active a .ic{
 	    -webkit-transform: rotate(0deg);
 	    -moz-transform: rotate(0deg);
 	    -ms-transform: rotate(0deg);
 	    -o-transform: rotate(0deg);
 	    transform: rotate(0deg);}
 
-	#main>#searchform .advance-search-content {display: none;}
-	#main>#searchform .advance-search-content h2{padding: 40px 60px 20px;color:#005d88;font-weight: 300;font-size: 2em;}
-	#main>#searchform .advance-search-content h2 a{cursor: pointer;border:1px solid #59b3e0;font-size: 0.7em;float: right;padding: 0 10px;}
-	#main>#searchform .advance-search-content legend{margin-bottom: 20px;color:#005d88;font-weight: 300;font-size: 1.5em;}
-	#main>#searchform .advance-search-content h3{margin-bottom: 12px;font-weight: 600;font-size: 1.333em;line-height: 24px;color:#a0a0a0;}
-	#main>#searchform .advance-search-content ul{margin:0;padding:0;}
-	#main>#searchform .advance-search-content li{float:left;width:25%;padding:0 60px;border-left:1px solid #219ad6;}
-	#main>#searchform .advance-search-content li:first-child{border-left:0;}
-	#main>#searchform .advance-search-content .scroll-box{height: 290px;}
-	#main>#searchform .advance-search-content p{margin:0 0 12px 0;position: relative;overflow: hidden;line-height: 24px;}
-	#main>#searchform .advance-search-content p:last-child{margin:0;}
-	#main>#searchform .advance-search-content p label{display: inline-block;padding-left:30px;background: url(images/ic_uncheck.png) left 2px no-repeat;}
-	#main>#searchform .advance-search-content p.checked label{background-image: url(images/ic_check.png);}
-	#main>#searchform .advance-search-content p input{position: absolute;left:-999px;}
-	#main>#searchform .advance-search-content p label{font-size:1.333em;color: #000;font-weight:300;}
-	#main>#searchform .advance-search-content p span{font-size:1.333em;font-weight: 300;color: #bcbdc0;}	
-	#main>#searchform .advance-search-content>a {border:1px solid #59b3e0;font-size: 2em;float: right;padding: 0 30px;float: right;margin: 0 60px 30px 0;line-height: 1.8;}
+	.advance-search-content {display: none;}
+	.advance-search-content h2{padding: 40px 60px 20px;color:#005d88;font-weight: 300;font-size: 2em;}
+	.advance-search-content h2 a{cursor: pointer;border:1px solid #59b3e0;font-size: 0.7em;float: right;padding: 0 10px;}
+	.advance-search-content legend{margin-bottom: 20px;color:#005d88;font-weight: 300;font-size: 1.5em;}
+	.advance-search-content h3{margin-bottom: 12px;font-weight: 600;font-size: 1.333em;line-height: 24px;color:#a0a0a0;}
+	.advance-search-content ul{margin:0;padding:0;}
+	.advance-search-content li{float:left;width:25%;padding:0 60px;border-left:1px solid #219ad6;}
+	.advance-search-content li:first-child{border-left:0;}
+	.advance-search-content .scroll-box{height: 290px;}
+	.advance-search-content p{margin:0 0 12px 0;position: relative;overflow: hidden;line-height: 24px;}
+	.advance-search-content p:last-child{margin:0;}
+	.advance-search-content p label{display: inline-block;padding-left:30px;background: url(images/ic_uncheck.png) left 2px no-repeat;}
+	.advance-search-content p.checked label{background-image: url(images/ic_check.png);}
+	.advance-search-content p input{position: absolute;left:-999px;}
+	.advance-search-content p label{font-size:1.333em;color: #000;font-weight:300;}
+	.advance-search-content p span{font-size:1.333em;font-weight: 300;color: #bcbdc0;}	
+	.advance-search-content>a {border:1px solid #59b3e0;font-size: 2em;float: right;padding: 0 30px;float: right;margin: 0 60px 30px 0;line-height: 1.8;}
 	/*End-Search Banner*/
 
 	/*Author post*/
 	.author-page-top{overflow: hidden;margin-bottom: 50px;}	
 	.author-page-top ul{margin: 0;padding: 0;list-style: none;}	
-	.author-page-info{float: left;width: 72%;border-right: 1px solid #219ad6!important;overflow: hidden;padding-right:50px;}
+	.author-page-info{float: left;width: 72%;border-right: 1px solid #219ad6!important;overflow: hidden;}
 	.author-page-info .author-page-image{float: left;width:250px;border:1px solid #ccc;    background-color: #f9f9f9;padding:3px;overflow: hidden;}
 	.author-page-content .thumbinner{float: left;width:250px;border:1px solid #ccc;    background-color: #f9f9f9;padding:3px;overflow: hidden; font-size: 12px; cursor:pointer}
 	.author-page-content .thumbcaption p{font-size: 12px; margin-top: 0px; margin-bottom: 0px; display: inline;cursor:pointer}
@@ -92,8 +103,8 @@
 	.mw-gallery-traditional .gallerybox .gallerytext{min-height: 170px; padding: 0px 10px 0px 10px;}
 
 	.author-page-info .author-page-detail{float: right;width:100%;line-height: 1.3;}
-	.author-page-info .author-page-detail p{font-size: 1.5em;margin:0;line-height: 1.3!important;}	
-	.author-page-info .author-page-detail h1{padding-bottom: 20px!important;}	
+	.author-page-info .author-page-detail p{font-size: 1.1rem;margin:0;line-height: 1.3!important;}	
+	.author-page-info .author-page-detail h1{padding-bottom: 20px!important; font-size:2rem}	
 	.author-page-info .author-page-detail span{text-transform: capitalize;}	
 	.has-image .author-page-info .author-page-detail{width:calc( 100% - 320px );}	
 	.author-page-navigation{float: right;width: 28%;padding-left: 50px;}
@@ -104,10 +115,11 @@
 	.author-page-content b{color:inherit;}
 	.author-page-content h2{font-size: 1.875em;font-weight: 300;color:inherit!important;margin: 30px 0px 10px 0px;}
 	.author-page-content h3{font-size: 18px; margin-top: 10px;}
-	.author-page-content table{max-width:30%;}
+	.author-page-content table{max-width:55%;}
 	.author-page-content table.ambox{display: none;}
-	.author-page-content table p{font-style: italic;}
-	.author-page-content table div{font-size: 1em!important;}
+	.author-page-content table p{font-style: italic; font-size: 0.7rem}
+	.author-page-content table td{font-style: italic; font-size: 0.7rem}
+	.author-page-content table div{font-size: 0.7rem;}
 	.author-page-content ul{margin-bottom:0;}
 	.author-page-content dt{font-size: 1.333em;line-height: normal;font-weight: bold;}
 	.author-page-content .navbox{display: none;}
@@ -141,11 +153,10 @@
 	/* Medium screens */
 	@media only screen and (min-width: 990px)  and (max-width: 1279px) {		
 		/*Search Banner*/
-		#main>#searchform input[type=text]{height:100px;border:0;padding:20px 100px 20px 40px;font-size: 2.5em;color: #5098d2;font-family: 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: 300;}
-		#main>#searchform .advance-search-content .scroll-box{height: 136px;}
-		#main > #searchform .advance-search-content h2 {padding: 30px 30px 10px;}
-		#main > #searchform .advance-search-content li{padding: 0 30px 10px;}	
-		#main > #searchform .advance-search-content p label{font-size:	1em;}
+		.advance-search-content .scroll-box{height: 136px;}
+		.advance-search-content h2 {padding: 30px 30px 10px;}
+		.advance-search-content li{padding: 0 30px 10px;}	
+		.advance-search-content p label{font-size:	1em;}
 		/*End-Search Banner*/
 		/*Author list*/
 		.alphabet-navigation a{font-size: 1.833em;}
@@ -154,14 +165,11 @@
 	/* Tablet Portrait size to standard 960 (devices and browsers) */
 	@media only screen and (min-width: 768px) and (max-width: 989px) {
 		/*Search Banner*/
-		#main>#searchform{padding-top: 40px;min-height: 210px;}
-		#main>#searchform input[type=text]{height:70px;font-size: 2em;padding: 10px 15px;}
-		#main>#searchform #searchsubmit{width:70px;height:70px;}	
-		#main > #searchform .advance-search-content h2 {padding: 40px 20px 10px;}
-		#main > #searchform .advance-search-content li{padding: 0 20px 10px;}	
-		#main > #searchform .advance-search-content p label{font-size:	0.813em;}
-		#main>#searchform .advance-search-content .scroll-box{height: 136px;}
-		#main>#searchform .advance-search-content>a{margin-right: 20px;}
+		.advance-search-content h2 {padding: 40px 20px 10px;}
+		.advance-search-content li{padding: 0 20px 10px;}	
+		.advance-search-content p label{font-size:	0.813em;}
+		.advance-search-content .scroll-box{height: 136px;}
+		.advance-search-content>a{margin-right: 20px;}
 		/*End-Search Banner*/
 		/*Author post*/
 		.author-page-info .author-page-image{width:200px;}
@@ -179,25 +187,20 @@
 		.white-popup .mfp-close{width:24px;height:24px;line-height: 24px;}
 		/*End-Magnific popup*/
 		/*Search Banner*/
-		#main>#layer_slider_1{position: relative;}
-		#main>#searchform{padding-top: 10px;position: absolute;left:0;top:0;right:0;}
-		#main>#searchform input[type=text]{height:40px;font-size: 1em;padding: 10px 15px;}
-		#main>#searchform #searchsubmit{width:40px;height:40px;-webkit-background-size: 50% 50%;
-		background-size: 50% 50%;}
-		#main>#searchform .advance-search-container>a{margin-right: 0;font-size: 1em;}
-		#main > #searchform .advance-search-container{margin-top: 3px;}
-		#main > #searchform .advance-search-container a{padding: 0 10px;line-height: 1.6;}
-		#main > #searchform .advance-search-container .ic{width:15px;height:8px;
+		.advance-search-container>a{margin-right: 0;font-size: 1em;}
+		.advance-search-container{margin-top: 3px;}
+		.advance-search-container a{padding: 0 10px;line-height: 1.6;}
+		.advance-search-container .ic{width:15px;height:8px;
 			-webkit-background-size: 15px auto;
 			-moz-background-size: 15px auto;
 			background-size: 15px auto;}
-		#main > #searchform .advance-search-content h2 {padding: 30px 15px 10px;font-size: 1.75em;}
-		#main > #searchform .advance-search-content legend{font-size: 1.5em;margin-bottom:10px;}
-		#main > #searchform .advance-search-content h3{margin-bottom:10px;}
-		#main > #searchform .advance-search-content li{padding: 0 15px 5px;width:100%;border:0;}
-		#main > #searchform .advance-search-content p{margin-bottom: 10px;}
-		#main>#searchform .advance-search-content>a{margin-right:15px;font-size: 1.75em;}
-		#main>#searchform .advance-search-content .scroll-box{height: 136px;}
+		.advance-search-content h2 {padding: 30px 15px 10px;font-size: 1.75em;}
+		.advance-search-content legend{font-size: 1.5em;margin-bottom:10px;}
+		.advance-search-content h3{margin-bottom:10px;}
+		.advance-search-content li{padding: 0 15px 5px;width:100%;border:0;}
+		.advance-search-content p{margin-bottom: 10px;}
+		.advance-search-content>a{margin-right:15px;font-size: 1.75em;}
+		.advance-search-content .scroll-box{height: 136px;}
 		/*End-Search Banner*/
 
 		/*Author post*/
@@ -215,9 +218,6 @@
 		.author-page-tag{margin-bottom: 40px!important;}
 		.author-page-tag-content {font-size: 0.813em;line-height: 1.5;}
 		.author-page-related-book > h2{font-size: 2em;}			
-		.avia_desktop .author-page-related-book .avia-content-slider .avia-slideshow-arrows a{width:16px!important;height:32px!important;}
-		#top .author-page-related-book .avia-slideshow-arrows a.next-slide{right:-20px;background: url(images/bt_next.png) right top  / 16px auto no-repeat!important;}
-		#top .author-page-related-book .avia-slideshow-arrows a.prev-slide{left:-20px;background: url(images/bt_prev.png) left top/ 16px auto no-repeat !important;}
 		/*End-Author post*/
  	}
 

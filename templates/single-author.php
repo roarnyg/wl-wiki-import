@@ -27,9 +27,6 @@ get_header( 'author' ); ?>
 	?>
 
 	<?php
-		do_action( 'litteraturnett_before_author_sidebar' );
-		do_action( 'litteraturnett_author_sidebar' );
-		do_action( 'litteraturnett_after_author_sidebar' );
 
 		do_action( 'litteraturnett_author_page_wrapper_end' );
 		do_action( 'litteraturnett_author_after_page_wrapper' );

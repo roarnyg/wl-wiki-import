@@ -130,7 +130,7 @@ add_action('wp_body_open', function () {
 
 		add_action('litteraturnett_single_author_content', array($page_controller,'single_author_content'),10);
 
-		add_action('litteraturnett_author_sidebar', array($page_controller,'author_sidebar'),10);
+//		add_action('litteraturnett_author_sidebar', array($page_controller,'author_sidebar'),10);
 
 		add_action('litteraturnett_author_after_page_wrapper', array($page_controller,'author_taglist'),10);
 		add_action('litteraturnett_author_after_page_wrapper', array($page_controller,'author_related_book'),11);
