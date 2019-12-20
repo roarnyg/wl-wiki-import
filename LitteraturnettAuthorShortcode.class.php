@@ -42,12 +42,12 @@ class LitteraturnettAuthorShortcode {
                 $fieldId = 'municipality';
                 break;
             case 'period':
-                $pageTitle .= __("period", 'litteraturnett');
+                $pageTitle .= __("period", 'wl-wiki-import');
                 $fieldId = 'period';
                 break;
             case 'gerne': // IOK 2019-11-20 wut
             case 'genre':
-                $pageTitle .= __("gerne", 'litteraturnett');
+                $pageTitle .= __("gerne", 'wl-wiki-import');
                 $fieldId = 'genre';
                 break;
         }
@@ -207,7 +207,7 @@ class LitteraturnettAuthorShortcode {
     // IOK 2019-11-20 This requires the plugin "Search Tracking"
     function generate_authorList_latestSearch(){
         $numberOfResult = 10;
-        $result = '<h1>' . __('Last searched authors','litteraturnett') . "</h1>";
+        $result = '<h1>' . __('Last searched authors','wl-wiki-import') . "</h1>";
         $result .= "<ul class='latest-search'>";
         $latestSearch = array();
         if (function_exists('st_get_latest_search')) {

@@ -21,16 +21,16 @@ class Litteraturnett {
 	}
 
 	private function translation_dummy () {
-		print __('Dynamic string', 'litteraturnett');
-		print __('Norge', 'litteraturnett');
-		print __('Norway', 'litteraturnett');
+		print __('Dynamic string', 'wl-wiki-import');
+		print __('Norge', 'wl-wiki-import');
+		print __('Norway', 'wl-wiki-import');
 	}
 
 	// Log; use Woo if present but otherwise just log to the error log
 	public function log ($what,$type='info') {
 		if (function_exists('wc_get_logger')) {
 			$logger = wc_get_logger();
-			$context = array('source'=>'litteraturnett');
+			$context = array('source'=>'wl-wiki-import');
 			$logger->log($type,$what,$context);
 		} else {
 			error_log($what);
@@ -69,17 +69,17 @@ class Litteraturnett {
 
 	public function create_topics_hierarchical_taxonomy() {
 		$labels = array(
-				'name' => _x( 'Wiki category groups', 'taxonomy general name','litteraturnett' ),
-				'singular_name' => _x( 'Wiki category group', 'taxonomy singular name','litteraturnett' ),
-				'search_items' =>  __( 'Search groups' ,'litteraturnett'),
-				'all_items' => __( 'All groups','litteraturnett' ),
-				'parent_item' => __( 'Parent group','litteraturnett' ),
-				'parent_item_colon' => __( 'Parent group:' ,'litteraturnett'),
-				'edit_item' => __( 'Edit group' ,'litteraturnett'),
-				'update_item' => __( 'Update group','litteraturnett' ),
-				'add_new_item' => __( 'Add New group','litteraturnett' ),
-				'new_item_name' => __( 'New group Name' ,'litteraturnett'),
-				'menu_name' => __( 'Wiki category groups' ,'litteraturnett'),
+				'name' => _x( 'Wiki category groups', 'taxonomy general name','wl-wiki-import' ),
+				'singular_name' => _x( 'Wiki category group', 'taxonomy singular name','wl-wiki-import' ),
+				'search_items' =>  __( 'Search groups' ,'wl-wiki-import'),
+				'all_items' => __( 'All groups','wl-wiki-import' ),
+				'parent_item' => __( 'Parent group','wl-wiki-import' ),
+				'parent_item_colon' => __( 'Parent group:' ,'wl-wiki-import'),
+				'edit_item' => __( 'Edit group' ,'wl-wiki-import'),
+				'update_item' => __( 'Update group','wl-wiki-import' ),
+				'add_new_item' => __( 'Add New group','wl-wiki-import' ),
+				'new_item_name' => __( 'New group Name' ,'wl-wiki-import'),
+				'menu_name' => __( 'Wiki category groups' ,'wl-wiki-import'),
 			       );
 		// IOK added 'author' 2019-11-13
 		register_taxonomy('groups',array('post','author'), array(
@@ -101,13 +101,13 @@ class Litteraturnett {
 
 	public function enqueue_scripts() {
 		wp_enqueue_script('magnific-popup', plugins_url( 'js/jquery.magnific-popup.min.js', __FILE__ ), array('jquery'), filemtime( plugin_dir_path( __FILE__ ) . 'js/jquery.magnific-popup.min.js'));
-		wp_register_script('litteraturnett', plugins_url( 'js/litteraturnett.js', __FILE__ ), array('jquery','magnific-popup'), filemtime( plugin_dir_path( __FILE__ ) . 'js/litteraturnett.js'));
-		wp_localize_script('litteraturnett', 'LitteraturnettSettings',
-				array('sourceperson'=>__('By', 'litteraturnett'),
-					'source'      =>__('Source', 'litteraturnett'),
+		wp_register_script('wl-wiki-import', plugins_url( 'js/litteraturnett.js', __FILE__ ), array('jquery','magnific-popup'), filemtime( plugin_dir_path( __FILE__ ) . 'js/litteraturnett.js'));
+		wp_localize_script('wl-wiki-import', 'LitteraturnettSettings',
+				array('sourceperson'=>__('By', 'wl-wiki-import'),
+					'source'      =>__('Source', 'wl-wiki-import'),
 					'wikiApiUrl'  => $this->get_wikipedia_api()
 				     ));
-		wp_enqueue_script('litteraturnett');
+		wp_enqueue_script('wl-wiki-import');
 
 	}
 
@@ -171,7 +171,7 @@ class Litteraturnett {
 	}
 
 	public function plugins_loaded () {
-		$ok = load_plugin_textdomain('litteraturnett', false, basename( dirname( __FILE__ ) ) . "/languages");
+		$ok = load_plugin_textdomain('wl-wiki-import', false, basename( dirname( __FILE__ ) ) . "/languages");
 		add_action('update_option_litteraturnett_options', array($this, 'save_regions'), 10, 3);
 	}
 
@@ -184,7 +184,7 @@ class Litteraturnett {
 		add_filter( 'manage_edit-author_sortable_columns', array($this,'np_author_sortable_column' ));
 		add_action( 'pre_get_posts', array($this,'np_author_orderby' ));
 		add_action( 'manage_author_posts_custom_column', array($this,'np_author_column_content'), 10, 2 );
-		add_meta_box( 'wl_wiki_author', __('Wikipedia Import','litteraturnett'), array($this,'add_wl_wiki_author_metabox'), 'author', 'side', 'core' );
+		add_meta_box( 'wl_wiki_author', __('Wikipedia Import','wl-wiki-import'), array($this,'add_wl_wiki_author_metabox'), 'author', 'side', 'core' );
 
 
 
@@ -193,8 +193,8 @@ class Litteraturnett {
 
 	public function add_wl_wiki_author_metabox () {
 		global $post;
-		$label = __("Update from Wikipedia", 'litteraturnett');
-		$updating = __("Updating...", 'litteraturnett');
+		$label = __("Update from Wikipedia", 'wl-wiki-import');
+		$updating = __("Updating...", 'wl-wiki-import');
 		$pageid = get_field('page_id');
 		$lastupdated = get_field('author_last_updated');
 		?>
@@ -254,7 +254,7 @@ public function admin_enqueue_scripts ($suffix) {
 }
 
 public function admin_menu () {
-	add_options_page(__('Litteraturnett', 'litteraturnett'), __('Litteraturnett','litteraturnett'), 'manage_options', 'litteraturnett_options',array($this,'toolpage'));
+	add_options_page(__('Litteraturnett', 'wl-wiki-import'), __('Litteraturnett','wl-wiki-import'), 'manage_options', 'litteraturnett_options',array($this,'toolpage'));
 }
 // Helper function for creating an admin notice.
 public function add_admin_notice($notice) {
@@ -265,33 +265,33 @@ public function add_admin_notice($notice) {
 // Register Custom Post Type
 public function custom_post_types() {
 	$labels = array(
-			'name'                  => _x( 'Authors', 'Post Type General Name', 'litteraturnett' ),
-			'singular_name'         => _x( 'Author', 'Post Type Singular Name', 'litteraturnett' ),
-			'menu_name'             => __( 'Authors', 'litteraturnett' ),
-			'name_admin_bar'        => __( 'Author', 'litteraturnett' ),
-			'archives'              => __( 'Author Archives', 'litteraturnett' ),
-			'attributes'            => __( 'Author Attributes', 'litteraturnett' ),
-			'parent_item_colon'     => __( 'Parent Item:', 'litteraturnett' ),
-			'all_items'             => __( 'All Authors', 'litteraturnett' ),
-			'add_new_item'          => __( 'Add New Author', 'litteraturnett' ),
-			'add_new'               => __( 'Add New', 'litteraturnett' ),
-			'new_item'              => __( 'New Author', 'litteraturnett' ),
-			'edit_item'             => __( 'Edit Author', 'litteraturnett' ),
-			'update_item'           => __( 'Update Author', 'litteraturnett' ),
-			'view_item'             => __( 'View Author', 'litteraturnett' ),
-			'view_items'            => __( 'View Authors', 'litteraturnett' ),
-			'search_items'          => __( 'Search Authors', 'litteraturnett' ),
-			'not_found'             => __( 'Not found', 'litteraturnett' ),
-			'not_found_in_trash'    => __( 'Not found in Trash', 'litteraturnett' ),
-			'featured_image'        => __( 'Featured Image', 'litteraturnett' ),
-			'set_featured_image'    => __( 'Set featured image', 'litteraturnett' ),
-			'remove_featured_image' => __( 'Remove featured image', 'litteraturnett' ),
-			'use_featured_image'    => __( 'Use as featured image', 'litteraturnett' ),
-			'insert_into_item'      => __( 'Insert into item', 'litteraturnett' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this item', 'litteraturnett' ),
-			'items_list'            => __( 'Items list', 'litteraturnett' ),
-			'items_list_navigation' => __( 'Author list navigation', 'litteraturnett' ),
-			'filter_items_list'     => __( 'Filter authors list', 'litteraturnett' ),
+			'name'                  => _x( 'Authors', 'Post Type General Name', 'wl-wiki-import' ),
+			'singular_name'         => _x( 'Author', 'Post Type Singular Name', 'wl-wiki-import' ),
+			'menu_name'             => __( 'Authors', 'wl-wiki-import' ),
+			'name_admin_bar'        => __( 'Author', 'wl-wiki-import' ),
+			'archives'              => __( 'Author Archives', 'wl-wiki-import' ),
+			'attributes'            => __( 'Author Attributes', 'wl-wiki-import' ),
+			'parent_item_colon'     => __( 'Parent Item:', 'wl-wiki-import' ),
+			'all_items'             => __( 'All Authors', 'wl-wiki-import' ),
+			'add_new_item'          => __( 'Add New Author', 'wl-wiki-import' ),
+			'add_new'               => __( 'Add New', 'wl-wiki-import' ),
+			'new_item'              => __( 'New Author', 'wl-wiki-import' ),
+			'edit_item'             => __( 'Edit Author', 'wl-wiki-import' ),
+			'update_item'           => __( 'Update Author', 'wl-wiki-import' ),
+			'view_item'             => __( 'View Author', 'wl-wiki-import' ),
+			'view_items'            => __( 'View Authors', 'wl-wiki-import' ),
+			'search_items'          => __( 'Search Authors', 'wl-wiki-import' ),
+			'not_found'             => __( 'Not found', 'wl-wiki-import' ),
+			'not_found_in_trash'    => __( 'Not found in Trash', 'wl-wiki-import' ),
+			'featured_image'        => __( 'Featured Image', 'wl-wiki-import' ),
+			'set_featured_image'    => __( 'Set featured image', 'wl-wiki-import' ),
+			'remove_featured_image' => __( 'Remove featured image', 'wl-wiki-import' ),
+			'use_featured_image'    => __( 'Use as featured image', 'wl-wiki-import' ),
+			'insert_into_item'      => __( 'Insert into item', 'wl-wiki-import' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this item', 'wl-wiki-import' ),
+			'items_list'            => __( 'Items list', 'wl-wiki-import' ),
+			'items_list_navigation' => __( 'Author list navigation', 'wl-wiki-import' ),
+			'filter_items_list'     => __( 'Filter authors list', 'wl-wiki-import' ),
 			);
 	$rewrite = array(
 			'slug'                  => 'writer',
@@ -300,8 +300,8 @@ public function custom_post_types() {
 			'feeds'                 => true);
 
 	$args = array(
-			'label'                 => __( 'Author', 'litteraturnett' ),
-			'description'           => __( 'Authors', 'litteraturnett' ),
+			'label'                 => __( 'Author', 'wl-wiki-import' ),
+			'description'           => __( 'Authors', 'wl-wiki-import' ),
 			'labels'                => $labels,
 			'supports'              => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', 'post-formats' ),
 			'taxonomies'            => array( 'category', 'post_tag', 'group' ),
@@ -338,7 +338,7 @@ public static function get_wikipedia_api() {
 // keep the option-data local to each class. IOK 2019-10-14
 public function toolpage () {
 	if (!is_admin() || !current_user_can('manage_options')) {
-		die(__("Insufficient privileges",'litteraturnett'));
+		die(__("Insufficient privileges",'wl-wiki-import'));
 	}
 	$options = get_option('litteraturnett_options'); 
 	$wikis = array('https://nn.wikipedia.org','https://no.wikipedia.org/');
@@ -354,7 +354,7 @@ public function toolpage () {
 
 	?>
 		<div class='wrap'>
-		<h2><?php _e('Litteraturnett', 'litteraturnett'); ?></h2>
+		<h2><?php _e('Litteraturnett', 'wl-wiki-import'); ?></h2>
 
 		<?php do_action('admin_notices'); ?>
 
@@ -363,39 +363,39 @@ public function toolpage () {
 		<table class="form-table" style="width:100%">
 
 		<tr>
-		<td><?php _e('Wikipedia Source', 'litteraturnett'); ?></td>
+		<td><?php _e('Wikipedia Source', 'wl-wiki-import'); ?></td>
 		<td width=30%>
 		<select required id=wikipedia name="litteraturnett_options[wikipedia]">
-		<option value=""><?php _e('Select one', 'litteraturnett'); ?></option>
+		<option value=""><?php _e('Select one', 'wl-wiki-import'); ?></option>
 		<?php foreach ($wikis as $wiki): ?>
 		<option <?php if ($options['wikipedia']==$wiki) echo ' selected '; ?> value="<?php echo esc_attr($wiki);?>"><?php echo esc_html($wiki); ?></option>
 		<?php endforeach; ?>
 		</select>
 		</td>
-		<td><?php _e('Select the Wikipedia you will use as a source for this site.','litteraturnett'); ?></td>
+		<td><?php _e('Select the Wikipedia you will use as a source for this site.','wl-wiki-import'); ?></td>
 		</tr>
 
 		<tr>
-		<td><?php _e('Region', 'litteraturnett'); ?></td>
+		<td><?php _e('Region', 'wl-wiki-import'); ?></td>
 		<td width=30%>
 		<select required id=region name="litteraturnett_options[region]">
-		<option value=""><?php _e('Select one', 'litteraturnett'); ?></option>
+		<option value=""><?php _e('Select one', 'wl-wiki-import'); ?></option>
 		<?php foreach ($regions as $r): ?>
-		<option <?php if (@$options['region']==$r) echo ' selected '; ?> value="<?php echo esc_attr($r);?>"><?php echo esc_html(__($r,'litteraturnett')); ?></option>
+		<option <?php if (@$options['region']==$r) echo ' selected '; ?> value="<?php echo esc_attr($r);?>"><?php echo esc_html(__($r,'wl-wiki-import')); ?></option>
 		<?php endforeach; ?>
 		</select>
 		</td>
-		<td><?php _e('Select your region, which will list the municipalities that are valid for this site. This can be overridden with the <code>litteraturnett_regions</code> filter..','litteraturnett'); ?></td>
+		<td><?php _e('Select your region, which will list the municipalities that are valid for this site. This can be overridden with the <code>litteraturnett_regions</code> filter..','wl-wiki-import'); ?></td>
 		</tr>
 
 
 
 		<tr>
-		<td><?php _e('Last updated page', 'litteraturnett'); ?></td>
+		<td><?php _e('Last updated page', 'wl-wiki-import'); ?></td>
 		<td width=30%>
-		<?php wp_dropdown_pages(array('post_status'=>'publish,private','selected'=>$last_updated_page, 'echo'=>1, 'show_option_none'=>__('None chosen', 'litteraturnett'), 'name'=>'litteraturnett_options[last_updated_page]')); ?>
+		<?php wp_dropdown_pages(array('post_status'=>'publish,private','selected'=>$last_updated_page, 'echo'=>1, 'show_option_none'=>__('None chosen', 'wl-wiki-import'), 'name'=>'litteraturnett_options[last_updated_page]')); ?>
 		</td>
-		<td><?php _e('Select an (empty! and probably private) page to be used to show last updated authors','litteraturnett'); ?></td>
+		<td><?php _e('Select an (empty! and probably private) page to be used to show last updated authors','wl-wiki-import'); ?></td>
 
 		</table>
 		<div> <input type="submit" style="float:left" class="button-primary" value="<?php _e('Save Changes') ?>" /> </div>
@@ -449,13 +449,13 @@ public static function uninstall() {
 
 function np_author_manage_sortable_columns( $sortable_columns ) {
 	// Let's also make the film rating column sortable
-	$sortable_columns[ 'author_last_updated' ] = __('Last Updated','litteraturnett');
+	$sortable_columns[ 'author_last_updated' ] = __('Last Updated','wl-wiki-import');
 
 	return $sortable_columns;
 }
 
 function slug_title_not_sortable( $cols ) {
-	$sortable_columns[ 'author_last_updated' ] = __('Last Updated','litteraturnett');
+	$sortable_columns[ 'author_last_updated' ] = __('Last Updated','wl-wiki-import');
 	return $cols;
 }
 function np_author_sortable_column( $columns ) {

@@ -81,36 +81,36 @@ class LitteraturnettAdvancedSearch {
 		?>
 			<label class="hidden-item" for="s"><?php _e("Search") ; ?> </label>
 			<div class="advance-search-container" id="advanceSearchContainer">
-			<a href="#" id="advanceSearchBut"><span class="item-text"><?php _e("Avansert søk",'litteraturnett'); ?></span><span class="ic"></span></a>
+			<a href="#" id="advanceSearchBut"><span class="item-text"><?php _e("Avansert søk",'wl-wiki-import'); ?></span><span class="ic"></span></a>
 			<div class="advance-search-content" id="advanceSearchContent">
-			<h2><?php _e("Filter", 'litteraturnett'); ?><a id="checkAllBut" href="#"><?php _e("Check / Uncheck all", 'litteraturnett'); ?></a></h2>
+			<h2><?php _e("Filter", 'wl-wiki-import'); ?><a id="checkAllBut" href="#"><?php _e("Check / Uncheck all", 'wl-wiki-import'); ?></a></h2>
 			<ul>
 			<li>
 			<fieldset>
-			<legend><?php _e("Genre",'litteraturnett') ?></legend>
+			<legend><?php _e("Genre",'wl-wiki-import') ?></legend>
 			<div class="scroll-box"><?php echo $this->generate_Option('genre','ge','genre'); ?></div>
 			</fieldset>
 			</li>
 			<li>
 			<fieldset>
-			<legend><?php _e("Birthyear",'litteraturnett'); ?></legend>
+			<legend><?php _e("Birthyear",'wl-wiki-import'); ?></legend>
 			<div class="scroll-box"><?php echo $this->generate_Option('period','pe','period');?></div>
 			</fieldset>
 			</li>
 			<li>
 			<fieldset>
-			<legend><?php _e("Gender",'litteraturnett');?></legend>
+			<legend><?php _e("Gender",'wl-wiki-import');?></legend>
 			<div class="scroll-box"><?php echo $this->generate_Option('gender','gen','gender');?></div>
 			</fieldset>
 			</li>
 			<li>
 			<fieldset>
-			<legend><?php _e("Municipality",'litteraturnett');?></legend>
+			<legend><?php _e("Municipality",'wl-wiki-import');?></legend>
 			<div class="scroll-box"><?php echo $this->generate_Option('municipality','mu','municipality') ?></div>
 			</fieldset>
 			</li>
 			</ul>
-			<a href="javascript:void(0)" id="advanceSearchBoxBut"><?php _e("Search",'litteraturnett')?></a>
+			<a href="javascript:void(0)" id="advanceSearchBoxBut"><?php _e("Search",'wl-wiki-import')?></a>
 			<div class="clear"></div>
 			</div>
 			</div>
@@ -148,7 +148,7 @@ class LitteraturnettAdvancedSearch {
 
 
 	function generate_authorFromRegionSelect(){
-		$result = '<label for="authorFromRegionSelect" class="hidden-item">'.__("Choose municipality", 'litteraturnett').'</label>';
+		$result = '<label for="authorFromRegionSelect" class="hidden-item">'.__("Choose municipality", 'wl-wiki-import').'</label>';
 		$result .= '<select class="styled-selectbox" id="authorFromRegionSelect">';
 		$result .= generate_authorFromRegion();
 		$result .= '</select>';
@@ -156,7 +156,7 @@ class LitteraturnettAdvancedSearch {
 	}
 	function generate_authorFromRegion(){
 		$authors = LitteraturnettAuthorFields::get_field_object('region');
-		$result ='<option value="">'.__("Choose a region", 'litteraturnett').'</option>';
+		$result ='<option value="">'.__("Choose a region", 'wl-wiki-import').'</option>';
 		if(!is_null($authors)){
 			foreach ($authors["choices"] as $key => $value) {
 				$result .='<option value="'.$value.'">'.$key.'</option>';
@@ -168,7 +168,7 @@ class LitteraturnettAdvancedSearch {
 
 	//Add municipalitySelect shortcode
 	function generate_municipalitySelect( $atts ) {
-		$result = '<label for="municipalitySelect" class="hidden-item">'.__("Choose municipality", 'litteraturnett').'</label>';
+		$result = '<label for="municipalitySelect" class="hidden-item">'.__("Choose municipality", 'wl-wiki-import').'</label>';
 		$result .= '<select class="styled-selectbox municipality-select" id="municipalitySelect">';
 		$result .= $this->generate_municipalityOption();
 		$result .= '</select>';

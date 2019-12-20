@@ -44,7 +44,7 @@ class LitteraturnettWikiImport {
     }
 
     function wiki_api_admin_default_setup() {
-        add_options_page(__('Wiki API Import', 'litteraturnett'), __('Wiki API Import', 'litteraturnett'), 'manage_options', 'wiki_api_import_default_form', array($this,'wiki_api_import_default_form'));
+        add_options_page(__('Wiki API Import', 'wl-wiki-import'), __('Wiki API Import', 'wl-wiki-import'), 'manage_options', 'wiki_api_import_default_form', array($this,'wiki_api_import_default_form'));
     }
 
     /**
@@ -111,12 +111,12 @@ class LitteraturnettWikiImport {
         ?>
             <div class="wiki-api-search-form wrapper">
             <div class="wiki-api-search-title">
-            <h1><?php _e("Import from Wikipedia : ", 'litteraturnett')?></h1>
+            <h1><?php _e("Import from Wikipedia : ", 'wl-wiki-import')?></h1>
             </div>
             <table class="form-table" id="wikiSearchForm">
             <tbody>
             <tr>
-            <th scope="row"><?php _e("Search : ", 'litteraturnett')?></td>
+            <th scope="row"><?php _e("Search : ", 'wl-wiki-import')?></td>
             <td><input type="text" class="regular-text" id="wikiApiSearchText" /></td>
             </tr>
             <tr class="hidden" id="wikiAdvanceSearchField">
@@ -130,17 +130,17 @@ class LitteraturnettWikiImport {
             <td><input type="text" class="regular-text" id="wikiApiSearchExtraText" /></td>
             </tr>
             <tr>
-            <th scope="row"><?php _e("Search Type: ", 'litteraturnett')?></td>
+            <th scope="row"><?php _e("Search Type: ", 'wl-wiki-import')?></td>
             <td>
-            <input id="search-type-name" checked class="search-type" type="checkbox" name="search-type[]" /> <?php _e("Name", 'litteraturnett')?>
-            <input id="search-type-category" class="search-type" type="checkbox" name="search-type[]" /> <?php _e("Category", 'litteraturnett')?>
-            <!-- <input id="search-type-sub-categories" class="search-type" type="checkbox" name="search-type[]" /> <?php _e("Sub categories", 'litteraturnett')?>	 -->
-            <input type="button" class="button wiki-advance-search-button" id="wiki-api-import-advance-search" value="<?php _e("Advance search", 'litteraturnett')?>"/>
+            <input id="search-type-name" checked class="search-type" type="checkbox" name="search-type[]" /> <?php _e("Name", 'wl-wiki-import')?>
+            <input id="search-type-category" class="search-type" type="checkbox" name="search-type[]" /> <?php _e("Category", 'wl-wiki-import')?>
+            <!-- <input id="search-type-sub-categories" class="search-type" type="checkbox" name="search-type[]" /> <?php _e("Sub categories", 'wl-wiki-import')?>	 -->
+            <input type="button" class="button wiki-advance-search-button" id="wiki-api-import-advance-search" value="<?php _e("Advance search", 'wl-wiki-import')?>"/>
             </td>
             </tr>
             <tr >
             <td colspan="2">
-            <input  class="button button-primary"  type="button" id="wiki-api-search-button" value="<?php _e("Search", 'litteraturnett')?>" wiki-api-uri="<?php _e($wiki_api_uri, 'litteraturnett');?>" />
+            <input  class="button button-primary"  type="button" id="wiki-api-search-button" value="<?php _e("Search", 'wl-wiki-import')?>" wiki-api-uri="<?php _e($wiki_api_uri, 'wl-wiki-import');?>" />
             </td>
             </tr>
             <tr>
@@ -152,8 +152,8 @@ class LitteraturnettWikiImport {
             </tr>
             <tr>
             <td colspan="2" class="wiki-api-import-action">
-            <input type="button" class="button button-primary" id="wiki-api-import-select-all" value="<?php _e("Select All", 'litteraturnett')?>"/>
-            <input type="button"  class="button button-primary"  id="wiki-api-import-button" value="<?php _e("Import", 'litteraturnett')?>"/>
+            <input type="button" class="button button-primary" id="wiki-api-import-select-all" value="<?php _e("Select All", 'wl-wiki-import')?>"/>
+            <input type="button"  class="button button-primary"  id="wiki-api-import-button" value="<?php _e("Import", 'wl-wiki-import')?>"/>
             <span class="import-loading hidden" id="importLoading"><img src="/wp-admin/images/wpspin_light.gif" alt="loading"><span></span></span>
             </td>
             </tr>
@@ -654,7 +654,7 @@ class LitteraturnettWikiImport {
                     $options = get_option('litteraturnett_options');
                     $last_updated_page = intval($options['last_updated_page']);
                     if (!$last_updated_page) {
-                       $this->wiki_log(__("Cannot update the 'last updated' page as it does not exist", 'litteraturnett'));
+                       $this->wiki_log(__("Cannot update the 'last updated' page as it does not exist", 'wl-wiki-import'));
                        return $result;
                     }
                     $list_id_content = implode("<br>", $list_id);

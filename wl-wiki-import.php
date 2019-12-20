@@ -1,8 +1,8 @@
 <?php
 /*
-   Plugin Name: Litteraturnett Forfatterdatabase
-   Plugin URI: https://wordpress.org/plugins/wl-literaturnett/
-   Description: Litteraturnett
+   Plugin Name: WL Wikipedia Import og Forfatterdatabase
+   Plugin URI: https://wordpress.org/plugins/wl-wiki-import/
+   Description: Create and manage a database of authors based on wikipedia information 
    Author: WP Hosting
    Author URI: https://www.wp-hosting.no/
    Text-domain: literaturnett 
@@ -11,15 +11,15 @@
    License: AGPLv3 or later
    License URI: http://www.gnu.org/licenses/agpl-3.0.html
 
-   This file is part of the WordPress plugin Litteraturnett Forfatterdatabase
+   This file is part of the WordPress plugin WL Wikipedia Import og Forfatterdatabase
    Copyright (C) 2018 WP Hosting AS
 
-   Litteraturnett Forfatterdatabase is free software: you can redistribute it and/or modify
+   WL Wikipedia Import og Forfatterdatabase is free software: you can redistribute it and/or modify
    it under the terms of the GNU Affero General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
 
-   Litteraturnett Forfatterdatabase is distributed in the hope that it will be useful,
+   WL Wikipedia Import og Forfatterdatabase is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU Affero General Public License for more details.

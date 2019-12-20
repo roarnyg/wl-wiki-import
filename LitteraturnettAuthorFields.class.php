@@ -57,7 +57,7 @@ class LitteraturnettAuthorFields {
         if( function_exists('acf_add_local_field_group') ):
             acf_add_local_field_group(array(
                         'key' => 'group_5d4d0f0eb4563',
-                        'title' => __('Author Fields','litteraturnett'),
+                        'title' => __('Author Fields','wl-wiki-import'),
                         'fields' => static::get_authorfields(),
                         'location' => array(
                             array(
@@ -85,7 +85,7 @@ class LitteraturnettAuthorFields {
                         'hide_on_screen' => array(
                                 ),
                         'active' => true,
-                        'description' => __('Fields used for the authors. Do not edit, these are managed by the Litteraturnett plugin','litteraturnett'),
+                        'description' => __('Fields used for the authors. Do not edit, these are managed by the Litteraturnett plugin','wl-wiki-import'),
                                 ));
 
         endif;

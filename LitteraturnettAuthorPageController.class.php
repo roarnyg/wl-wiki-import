@@ -26,7 +26,7 @@ class LitteraturnettAuthorPageController {
                 <?php the_content(); ?>
                 </div>
                 <div class="post-detail-author">
-                <?php echo __("This page uses material from", 'litteraturnett').' <a href="'.$wikiUrl.'" target="_blank">'.__("Wikipedia").'</a>, ' . __("licensed under", 'litteraturnett') . '  <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank"> CC-BY-SA </a>'  ; ?>
+                <?php echo __("This page uses material from", 'wl-wiki-import').' <a href="'.$wikiUrl.'" target="_blank">'.__("Wikipedia").'</a>, ' . __("licensed under", 'wl-wiki-import') . '  <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank"> CC-BY-SA </a>'  ; ?>
                 </div>
                 <?php
                 endif;
@@ -146,7 +146,7 @@ class LitteraturnettAuthorPageController {
         ?>
             <div class="author-page-navigation">
             <?php echo $sections; ?>
-            <a href="#authorCommentForm"><?php echo __("Do you have information to add?", 'litteraturnett') ?></a>
+            <a href="#authorCommentForm"><?php echo __("Do you have information to add?", 'wl-wiki-import') ?></a>
             </div>
             <?php
     }
@@ -167,7 +167,7 @@ class LitteraturnettAuthorPageController {
         }
         if($tagListHtml!=""){
             $tagListHtml = substr($tagListHtml, 0, -3); // remove the last seperator
-            echo "<div class='entry'><div class='$containerclass author-page-tag'><h2>".__('Tags','litteraturnett')."</h2><div class='author-page-tag-content'>$tagListHtml</div></div></div>";
+            echo "<div class='entry'><div class='$containerclass author-page-tag'><h2>".__('Tags','wl-wiki-import')."</h2><div class='author-page-tag-content'>$tagListHtml</div></div></div>";
         }
 
     }
