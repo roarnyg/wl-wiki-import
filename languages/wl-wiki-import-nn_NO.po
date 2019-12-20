@@ -1,0 +1,507 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WL Wikipedia Import og Forfatterdatabase\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-20 18:54+0000\n"
+"PO-Revision-Date: 2019-12-20 18:56+0000\n"
+"Last-Translator: muadmin <support@wp-hosting.no>\n"
+"Language-Team: Norwegian (Nynorsk)\n"
+"Language: nn_NO\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.1; wp-5.2.5"
+
+#: LitteraturnettWikiImport.class.php:47
+msgid "Wiki API Import"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:114
+msgid "Import from Wikipedia : "
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:119
+msgid "Search : "
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:133
+msgid "Search Type: "
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:135
+msgid "Name"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:136
+msgid "Category"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:137
+msgid "Sub categories"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:138
+msgid "Advance search"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:143
+#: LitteraturnettAdvancedSearch.class.php:113
+msgid "Search"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:155
+msgid "Select All"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:156
+msgid "Import"
+msgstr ""
+
+#: LitteraturnettWikiImport.class.php:657
+msgid "Cannot update the 'last updated' page as it does not exist"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Romaner, noveller, fortellinger"
+msgstr "Romanar, noveller, forteljingar"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Dikt og sanger"
+msgstr "Dikt og songar"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Skuespill"
+msgstr "Skodespel"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Krim"
+msgstr "Krim"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Sakprosa"
+msgstr "Sakprosa"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Barne- og ungdomslitteratur"
+msgstr "Barne- og ungdomslitteratur"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Humor"
+msgstr "Humor"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Serieforfattere"
+msgstr "Serieforfattere"
+
+#: LitteraturnettAuthorFields.class.php:25
+msgid "Tegneserieskapere"
+msgstr "Tegneserieskapere"
+
+#: LitteraturnettAuthorFields.class.php:69
+msgid "Author Fields"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:97
+msgid ""
+"Fields used for the authors. Do not edit, these are managed by the "
+"Litteraturnett plugin"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:108
+msgid "Local content"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:147
+#: LitteraturnettAdvancedSearch.class.php:102
+msgid "Gender"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:160
+msgid "Men"
+msgstr "Sakprosa"
+
+#: LitteraturnettAuthorFields.class.php:161
+msgid "Women"
+msgstr "Einskildkvinner"
+
+#: LitteraturnettAuthorFields.class.php:174
+msgid "First name"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:194
+msgid "Last name"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:214
+msgid "Birth year"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:235
+msgid "Book first name"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:255
+msgid "Book last name"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:275
+msgid "Death year"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:296
+#: LitteraturnettAdvancedSearch.class.php:90
+msgid "Genre"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:318
+msgid "Period"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:346
+#: LitteraturnettAdvancedSearch.class.php:108
+msgid "Municipality"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:368
+msgid "Fylke"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:394
+msgid "Sections"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:413
+msgid "Infobox"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:432
+msgid "Thumbnail"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:452
+msgid "Disable book section"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:471
+msgid "Revid"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:491
+msgid "Auto Update"
+msgstr ""
+
+#: LitteraturnettAuthorFields.class.php:510
+msgid "Last updated"
+msgstr ""
+
+#: LitteraturnettAuthorShortcode.class.php:45
+msgid "period"
+msgstr ""
+
+#: LitteraturnettAuthorShortcode.class.php:50
+msgid "gerne"
+msgstr ""
+
+#: LitteraturnettAuthorShortcode.class.php:210
+msgid "Last searched authors"
+msgstr ""
+
+#: LitteraturnettAuthorPageController.class.php:29
+msgid "This page uses material from"
+msgstr ""
+
+#: LitteraturnettAuthorPageController.class.php:29
+msgid "licensed under"
+msgstr ""
+
+#: LitteraturnettAuthorPageController.class.php:149
+msgid "Do you have information to add?"
+msgstr ""
+
+#: LitteraturnettAuthorPageController.class.php:170
+msgid "Tags"
+msgstr ""
+
+#: LitteraturnettAdvancedSearch.class.php:84
+msgid "Advanced search"
+msgstr ""
+
+#: LitteraturnettAdvancedSearch.class.php:86
+msgid "Filter"
+msgstr ""
+
+#: LitteraturnettAdvancedSearch.class.php:86
+msgid "Check / Uncheck all"
+msgstr ""
+
+#: LitteraturnettAdvancedSearch.class.php:96
+msgid "Birthyear"
+msgstr ""
+
+#: LitteraturnettAdvancedSearch.class.php:151
+#: LitteraturnettAdvancedSearch.class.php:171
+msgid "Choose municipality"
+msgstr ""
+
+#: LitteraturnettAdvancedSearch.class.php:159
+msgid "Choose a region"
+msgstr ""
+
+#: Litteraturnett.class.php:24
+msgid "Dynamic string"
+msgstr ""
+
+#: Litteraturnett.class.php:25
+msgid "Norge"
+msgstr "Noreg"
+
+#: Litteraturnett.class.php:26
+msgid "Norway"
+msgstr "Noreg"
+
+#: Litteraturnett.class.php:72
+msgctxt "taxonomy general name"
+msgid "Wiki category groups"
+msgstr ""
+
+#: Litteraturnett.class.php:73
+msgctxt "taxonomy singular name"
+msgid "Wiki category group"
+msgstr ""
+
+#: Litteraturnett.class.php:74
+msgid "Search groups"
+msgstr ""
+
+#: Litteraturnett.class.php:75
+msgid "All groups"
+msgstr ""
+
+#: Litteraturnett.class.php:76
+msgid "Parent group"
+msgstr ""
+
+#: Litteraturnett.class.php:77
+msgid "Parent group:"
+msgstr ""
+
+#: Litteraturnett.class.php:78
+msgid "Edit group"
+msgstr ""
+
+#: Litteraturnett.class.php:79
+msgid "Update group"
+msgstr ""
+
+#: Litteraturnett.class.php:80
+msgid "Add New group"
+msgstr ""
+
+#: Litteraturnett.class.php:81
+msgid "New group Name"
+msgstr ""
+
+#: Litteraturnett.class.php:82
+msgid "Wiki category groups"
+msgstr ""
+
+#: Litteraturnett.class.php:106
+msgid "By"
+msgstr ""
+
+#: Litteraturnett.class.php:107
+msgid "Source"
+msgstr ""
+
+#: Litteraturnett.class.php:187
+msgid "Wikipedia Import"
+msgstr ""
+
+#: Litteraturnett.class.php:196
+msgid "Update from Wikipedia"
+msgstr ""
+
+#: Litteraturnett.class.php:197
+msgid "Updating..."
+msgstr ""
+
+#: Litteraturnett.class.php:257 Litteraturnett.class.php:357
+msgid "Litteraturnett"
+msgstr ""
+
+#: Litteraturnett.class.php:268
+msgctxt "Post Type General Name"
+msgid "Authors"
+msgstr ""
+
+#: Litteraturnett.class.php:269
+msgctxt "Post Type Singular Name"
+msgid "Author"
+msgstr ""
+
+#: Litteraturnett.class.php:270 Litteraturnett.class.php:304
+msgid "Authors"
+msgstr ""
+
+#: Litteraturnett.class.php:271 Litteraturnett.class.php:303
+msgid "Author"
+msgstr ""
+
+#: Litteraturnett.class.php:272
+msgid "Author Archives"
+msgstr ""
+
+#: Litteraturnett.class.php:273
+msgid "Author Attributes"
+msgstr ""
+
+#: Litteraturnett.class.php:274
+msgid "Parent Item:"
+msgstr ""
+
+#: Litteraturnett.class.php:275
+msgid "All Authors"
+msgstr ""
+
+#: Litteraturnett.class.php:276
+msgid "Add New Author"
+msgstr ""
+
+#: Litteraturnett.class.php:277
+msgid "Add New"
+msgstr ""
+
+#: Litteraturnett.class.php:278
+msgid "New Author"
+msgstr ""
+
+#: Litteraturnett.class.php:279
+msgid "Edit Author"
+msgstr ""
+
+#: Litteraturnett.class.php:280
+msgid "Update Author"
+msgstr ""
+
+#: Litteraturnett.class.php:281
+msgid "View Author"
+msgstr ""
+
+#: Litteraturnett.class.php:282
+msgid "View Authors"
+msgstr ""
+
+#: Litteraturnett.class.php:283
+msgid "Search Authors"
+msgstr ""
+
+#: Litteraturnett.class.php:284
+msgid "Not found"
+msgstr ""
+
+#: Litteraturnett.class.php:285
+msgid "Not found in Trash"
+msgstr ""
+
+#: Litteraturnett.class.php:286
+msgid "Featured Image"
+msgstr ""
+
+#: Litteraturnett.class.php:287
+msgid "Set featured image"
+msgstr ""
+
+#: Litteraturnett.class.php:288
+msgid "Remove featured image"
+msgstr ""
+
+#: Litteraturnett.class.php:289
+msgid "Use as featured image"
+msgstr ""
+
+#: Litteraturnett.class.php:290
+msgid "Insert into item"
+msgstr ""
+
+#: Litteraturnett.class.php:291
+msgid "Uploaded to this item"
+msgstr ""
+
+#: Litteraturnett.class.php:292
+msgid "Items list"
+msgstr ""
+
+#: Litteraturnett.class.php:293
+msgid "Author list navigation"
+msgstr ""
+
+#: Litteraturnett.class.php:294
+msgid "Filter authors list"
+msgstr ""
+
+#: Litteraturnett.class.php:341
+msgid "Insufficient privileges"
+msgstr ""
+
+#: Litteraturnett.class.php:366
+msgid "Wikipedia Source"
+msgstr ""
+
+#: Litteraturnett.class.php:369 Litteraturnett.class.php:382
+msgid "Select one"
+msgstr ""
+
+#: Litteraturnett.class.php:375
+msgid "Select the Wikipedia you will use as a source for this site."
+msgstr ""
+
+#: Litteraturnett.class.php:379
+msgid "Region"
+msgstr ""
+
+#: Litteraturnett.class.php:388
+msgid ""
+"Select your region, which will list the municipalities that are valid for "
+"this site. This can be overridden with the <code>"
+"litteraturnett_regions</code> filter.."
+msgstr ""
+
+#: Litteraturnett.class.php:394
+msgid "Last updated page"
+msgstr ""
+
+#: Litteraturnett.class.php:396
+msgid "None chosen"
+msgstr ""
+
+#: Litteraturnett.class.php:398
+msgid ""
+"Select an (empty! and probably private) page to be used to show last updated "
+"authors"
+msgstr ""
+
+#: Litteraturnett.class.php:452 Litteraturnett.class.php:458
+msgid "Last Updated"
+msgstr ""
+
+#. Name of the plugin
+msgid "WL Wikipedia Import og Forfatterdatabase"
+msgstr ""
+
+#. Description of the plugin
+msgid "Create and manage a database of authors based on wikipedia information"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/wl-wiki-import/"
+msgstr ""
+
+#. Author of the plugin
+msgid "WP Hosting"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.wp-hosting.no/"
+msgstr ""

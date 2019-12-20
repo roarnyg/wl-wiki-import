@@ -1,0 +1,7 @@
+.import-loading{margin-left:10px;line-height: 30px;}
+.import-loading img{vertical-align: middle;margin-right:5px;}
+.wiki-advance-search-button{margin-left:80px!important;}
+.wiki-advance-search-button:focus{
+	-webkit-box-shadow:none!important;
+	box-shadow:none!important;}
+.wiki-advance-search-selectbox{float:right;}
