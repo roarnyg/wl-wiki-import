@@ -40,7 +40,7 @@ class LitteraturnettAuthorFields {
           }
         }
 
-        return $choices; 
+        return apply_filters('litteraturnett_regions', $choices); 
     }
 
     // Retrieve field object by name instead of field id (as in ACF get_field_object)
