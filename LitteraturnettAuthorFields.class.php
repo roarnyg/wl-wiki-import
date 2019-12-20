@@ -5,6 +5,7 @@ class LitteraturnettAuthorFields {
     protected static $instance = null;
     // Make field definitions accessible by name instead of field ID
     protected static $indexedfields = array();
+    protected static $authorfields = null;
 
     // This class should only get instantiated with this method. IOK 2019-10-14 
     public static function instance()  {
@@ -13,10 +14,34 @@ class LitteraturnettAuthorFields {
     }
 
     public function __construct() {
-        foreach(static::$authorfields as $af) {
+        $authorfields = static::get_authorfields();
+        foreach($authorfields as $af) {
            static::$indexedfields[$af['name']] = $af;
         }
     } 
+
+    // Return a properly formatted list of municipalities based on the users settings
+    public static function municipalities () {
+        $mun = get_option('litteraturnett_regions');
+        if (empty($mun)) {
+          $regiondata = LitteraturnettRegions::allRegions();
+          $mun = $regiondata['Norge'];
+          update_option('litteraturnett_regions', $mun, true);
+        }
+        // This is a list of either kommuner or fylker, if fylker, the value will be a list of kommuner.
+        // Flatten this so that a 'fylke' is a choice with null value
+        $choices = array();
+        foreach ($mun as $key=>$value) {
+          if (is_array($value)) { 
+              $choices[$key]='';
+              foreach($value as $m) $choices[$m]=$m;
+          } else {
+              $choices[$value]=$value;
+          }
+        }
+
+        return $choices; 
+    }
 
     // Retrieve field object by name instead of field id (as in ACF get_field_object)
     public function get_field_object($name) {
@@ -33,7 +58,7 @@ class LitteraturnettAuthorFields {
             acf_add_local_field_group(array(
                         'key' => 'group_5d4d0f0eb4563',
                         'title' => __('Author Fields','litteraturnett'),
-                        'fields' => static::$authorfields,
+                        'fields' => static::get_authorfields(),
                         'location' => array(
                             array(
                                 array(
@@ -66,8 +91,9 @@ class LitteraturnettAuthorFields {
         endif;
     }
 
-    public static $authorfields = 
-        array(
+    public static function get_authorfields() {
+       if (static::$authorfields) return static::$authorfields;
+       static::$authorfields = array(
                 array(
                     'key' => 'field_569cc8be15cce',
                     'label' => 'Lokalt innhold',
@@ -329,98 +355,7 @@ class LitteraturnettAuthorFields {
                                                               'class' => '',
                                                               'id' => '',
                                                               ),
-                                                          'choices' => array(
-                                                              'Nordland' => '',
-                                                              'Alstahaug' => 'Alstahaug',
-                                                              'Andøy' => 'Andøy',
-                                                              'Ballangen' => 'Ballangen',
-                                                              'Beiarn' => 'Beiarn',
-                                                              'Bindal' => 'Bindal',
-                                                              'Bodø' => 'Bodø',
-                                                              'Brønnøy' => 'Brønnøy',
-                                                              'Bø' => 'Bø',
-                                                              'Dønna' => 'Dønna',
-                                                              'Evenes' => 'Evenes',
-                                                              'Fauske' => 'Fauske',
-                                                              'Flakstad' => 'Flakstad',
-                                                              'Gildeskål' => 'Gildeskål',
-                                                              'Grane' => 'Grane',
-                                                              'Hadsel' => 'Hadsel',
-                                                              'Hamarøy' => 'Hamarøy',
-                                                              'Hattfjelldal' => 'Hattfjelldal',
-                                                              'Hemnes' => 'Hemnes',
-                                                              'Herøy' => 'Herøy',
-                                                              'Leirfjord' => 'Leirfjord',
-                                                              'Lurøy' => 'Lurøy',
-                                                              'Lødingen' => 'Lødingen',
-                                                              'Meløy' => 'Meløy',
-                                                              'Moskenes' => 'Moskenes',
-                                                              'Narvik' => 'Narvik',
-                                                              'Nesna' => 'Nesna',
-                                                              'Rana' => 'Rana',
-                                                              'Rødøy' => 'Rødøy',
-                                                              'Røst' => 'Røst',
-                                                              'Saltdal' => 'Saltdal',
-                                                              'Sortland' => 'Sortland',
-                                                              'Steigen' => 'Steigen',
-                                                              'Sømna' => 'Sømna',
-                                                              'Sørfold' => 'Sørfold',
-                                                              'Tjeldsund' => 'Tjeldsund',
-                                                              'Træna' => 'Træna',
-                                                              'Tysfjord' => 'Tysfjord',
-                                                              'Vefsn' => 'Vefsn',
-                                                              'Vega' => 'Vega',
-                                                              'Vestvågøy' => 'Vestvågøy',
-                                                              'Vevelstad' => 'Vevelstad',
-                                                              'Værøy' => 'Værøy',
-                                                              'Vågan' => 'Vågan',
-                                                              'Øksnes' => 'Øksnes',
-                                                              'Troms' => '',
-                                                              'Balsfjord' => 'Balsfjord',
-                                                              'Bardu' => 'Bardu',
-                                                              'Berg' => 'Berg',
-                                                              'Dyrøy' => 'Dyrøy',
-                                                              'Gratangen' => 'Gratangen',
-                                                              'Harstad' => 'Harstad',
-                                                              'Ibestad' => 'Ibestad',
-                                                              'Karlsøy' => 'Karlsøy',
-                                                              'Kvæfjord' => 'Kvæfjord',
-                                                              'Kvænangen' => 'Kvænangen',
-                                                              'Kåfjord' => 'Kåfjord',
-                                                              'Lavangen' => 'Lavangen',
-                                                              'Lenvik' => 'Lenvik',
-                                                              'Lyngen' => 'Lyngen',
-                                                              'Målselv' => 'Målselv',
-                                                              'Nordreisa' => 'Nordreisa',
-                                                              'Salangen' => 'Salangen',
-                                                              'Skjervøy' => 'Skjervøy',
-                                                              'Skånland' => 'Skånland',
-                                                              'Storfjord' => 'Storfjord',
-                                                              'Sørreisa' => 'Sørreisa',
-                                                              'Torsken' => 'Torsken',
-                                                              'Tranøy' => 'Tranøy',
-                                                              'Tromsø' => 'Tromsø',
-                                                              'Finnmark' => '',
-                                                              'Alta' => 'Alta',
-                                                              'Berlevåg' => 'Berlevåg',
-                                                              'Båtsfjord' => 'Båtsfjord',
-                                                              'Gamvik' => 'Gamvik',
-                                                              'Hammerfest' => 'Hammerfest',
-                                                              'Hasvik' => 'Hasvik',
-                                                              'Karasjok' => 'Karasjok',
-                                                              'Kautokeino' => 'Kautokeino',
-                                                              'Kvalsund' => 'Kvalsund',
-                                                              'Lebesby' => 'Lebesby',
-                                                              'Loppa' => 'Loppa',
-                                                              'Måsøy' => 'Måsøy',
-                                                              'Nesseby' => 'Nesseby',
-                                                              'Nordkapp' => 'Nordkapp',
-                                                              'Porsanger' => 'Porsanger',
-                                                              'Sør-Varanger' => 'Sør-Varanger',
-                                                              'Tana' => 'Tana',
-                                                              'Vadsø' => 'Vadsø',
-                                                              'Vardø' => 'Vardø',
-                                                              ),
+                                                          'choices' => static::municipalities(),
                                                               'default_value' => array(
                                                                       ),
                                                               'layout' => 'horizontal',
@@ -592,4 +527,6 @@ class LitteraturnettAuthorFields {
                                                                               'maxlength' => '',
                                                                            ),
                                                                       );
+           	return static::$authorfields;
+           }
 }

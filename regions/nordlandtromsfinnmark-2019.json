@@ -70,5 +70,27 @@
         "Torsken",
         "Tran\u00f8y",
         "Troms\u00f8"
+    ],
+    "Finnmark" : [
+        "Alta" ,
+	"Berlevåg" ,
+	"Båtsfjord" ,
+	"Gamvik" ,
+	"Hammerfest" ,
+	"Hasvik" ,
+	"Karasjok" ,
+	"Kautokeino" ,
+	"Kvalsund" ,
+	"Lebesby" ,
+	"Loppa" ,
+	"Måsøy" ,
+	"Nesseby" ,
+	"Nordkapp" ,
+	"Porsanger" ,
+	"Sør-Varanger" ,
+	"Tana" ,
+	"Vadsø" ,
+	"Vardø" 
     ]
+
 }

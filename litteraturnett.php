@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-/* Instantiate the singleton, stash it in a global and add hooks. IOK 2018-02-07 */
+require_once("LitteraturnettRegions.class.php");
 require_once("LitteraturnettAuthorFields.class.php");
 require_once("LitteraturnettAuthorShortcode.class.php");
 require_once("LitteraturnettAuthorPageController.class.php");
@@ -55,6 +55,7 @@ if (is_admin()) {
 add_action('init',array($Litteraturnett,'init'));
 add_action( 'plugins_loaded', array($LitteraturnettAuthorFields,'plugins_loaded'));
 add_action( 'plugins_loaded', array($Litteraturnett,'plugins_loaded'));
+
 
 /* This was formerly its own plugin, so it looks a bit different. IOK 2019-12-10 */
 require_once("LitteraturnettWikiImport.class.php");
