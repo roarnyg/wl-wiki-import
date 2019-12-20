@@ -349,7 +349,6 @@ public function toolpage () {
 
 
         if (isset($options['region']) && $options['region'] && $regiondata[$options['region']]) {
-            print( "<pre>Setting this data now</pre>");
             update_option('litteraturnett_regions', $regiondata[$options['region']], true);
         }
 
