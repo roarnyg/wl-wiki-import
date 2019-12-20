@@ -1,14 +1,13 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: WL Wikipedia Import og Forfatterdatabase\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-20 18:54+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"PO-Revision-Date: 2019-12-20 18:56+0000\n"
+"Last-Translator: muadmin <support@wp-hosting.no>\n"
+"Language-Team: Norwegian (Nynorsk)\n"
+"Language: nn_NO\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,39 +65,39 @@ msgstr ""
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Romaner, noveller, fortellinger"
-msgstr ""
+msgstr "Romanar, noveller, forteljingar"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Dikt og sanger"
-msgstr ""
+msgstr "Dikt og songar"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Skuespill"
-msgstr ""
+msgstr "Skodespel"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Krim"
-msgstr ""
+msgstr "Krim"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Sakprosa"
-msgstr ""
+msgstr "Sakprosa"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Barne- og ungdomslitteratur"
-msgstr ""
+msgstr "Barne- og ungdomslitteratur"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Humor"
-msgstr ""
+msgstr "Humor"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Serieforfattere"
-msgstr ""
+msgstr "Serieforfattere"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Tegneserieskapere"
-msgstr ""
+msgstr "Tegneserieskapere"
 
 #: LitteraturnettAuthorFields.class.php:69
 msgid "Author Fields"
@@ -121,11 +120,11 @@ msgstr ""
 
 #: LitteraturnettAuthorFields.class.php:160
 msgid "Men"
-msgstr ""
+msgstr "Sakprosa"
 
 #: LitteraturnettAuthorFields.class.php:161
 msgid "Women"
-msgstr ""
+msgstr "Einskildkvinner"
 
 #: LitteraturnettAuthorFields.class.php:174
 msgid "First name"
@@ -256,11 +255,11 @@ msgstr ""
 
 #: Litteraturnett.class.php:25
 msgid "Norge"
-msgstr ""
+msgstr "Noreg"
 
 #: Litteraturnett.class.php:26
 msgid "Norway"
-msgstr ""
+msgstr "Noreg"
 
 #: Litteraturnett.class.php:72
 msgctxt "taxonomy general name"

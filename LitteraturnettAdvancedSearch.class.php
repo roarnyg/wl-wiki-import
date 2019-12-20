@@ -81,7 +81,7 @@ class LitteraturnettAdvancedSearch {
 		?>
 			<label class="hidden-item" for="s"><?php _e("Search") ; ?> </label>
 			<div class="advance-search-container" id="advanceSearchContainer">
-			<a href="#" id="advanceSearchBut"><span class="item-text"><?php _e("Avansert søk",'wl-wiki-import'); ?></span><span class="ic"></span></a>
+			<a href="#" id="advanceSearchBut"><span class="item-text"><?php _e("Advanced search",'wl-wiki-import'); ?></span><span class="ic"></span></a>
 			<div class="advance-search-content" id="advanceSearchContent">
 			<h2><?php _e("Filter", 'wl-wiki-import'); ?><a id="checkAllBut" href="#"><?php _e("Check / Uncheck all", 'wl-wiki-import'); ?></a></h2>
 			<ul>

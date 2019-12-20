@@ -20,6 +20,15 @@ class LitteraturnettAuthorFields {
         }
     } 
 
+    // Supported genres for this  site
+    public static function genres () {
+         $genres = array(__('Romaner, noveller, fortellinger','wl-wiki-import'), __('Dikt og sanger','wl-wiki-import'), __('Skuespill','wl-wiki-import'),__('Krim','wl-wiki-import'),__('Sakprosa','wl-wiki-import'),__('Barne- og ungdomslitteratur','wl-wiki-import'), __('Sakprosa','wl_wiki_import'), __('Humor','wl-wiki-import'), __('Serieforfattere','wl-wiki-import'), __('Tegneserieskapere','wl-wiki-import')); 
+         $genres = apply_filters('litteraturnett_filters',$genres);
+         $choices = array();
+         foreach($genres as $g) $choices[$g] = $g;
+         return $choices;
+    }
+
     // Return a properly formatted list of municipalities based on the users settings
     public static function municipalities () {
         $mun = get_option('litteraturnett_regions');
@@ -96,7 +105,7 @@ class LitteraturnettAuthorFields {
        static::$authorfields = array(
                 array(
                     'key' => 'field_569cc8be15cce',
-                    'label' => 'Lokalt innhold',
+                    'label' => __('Local content','wl-wiki-import'),
                     'name' => 'localcontent',
                     'type' => 'wysiwyg',
                     'instructions' => '',
@@ -135,7 +144,7 @@ class LitteraturnettAuthorFields {
                     ),
                 array(
                         'key' => 'field_56ce9a41d6344',
-                        'label' => 'Kjønn',
+                        'label' => __('Gender','wl-wiki-import'),
                         'name' => 'gender',
                         'type' => 'select',
                         'instructions' => '',
@@ -148,8 +157,8 @@ class LitteraturnettAuthorFields {
                             ),
                         'choices' => array(
                             '' => '',
-                            'Menn' => 'Menn',
-                            'Kvinner' => 'Kvinner',
+                            __('Men','wl-wiki-import') => 'Menn',
+                            __('Women','wl-wiki-import') => 'Kvinner',
                             ),
                         'default_value' => array(
                             ),
@@ -162,7 +171,7 @@ class LitteraturnettAuthorFields {
                         ),
                         array(
                                 'key' => 'field_56dfc65f8c8ea',
-                                'label' => 'Fornavn',
+                                'label' => __('First name','wl-wiki-import'),
                                 'name' => 'first_name',
                                 'type' => 'text',
                                 'instructions' => '',
@@ -182,7 +191,7 @@ class LitteraturnettAuthorFields {
                              ),
                         array(
                                 'key' => 'field_56dfc66f8c8eb',
-                                'label' => 'Etternavn',
+                                'label' => __('Last name','wl-wiki-import'),
                                 'name' => 'last_name',
                                 'type' => 'text',
                                 'instructions' => '',
@@ -202,7 +211,7 @@ class LitteraturnettAuthorFields {
                              ),
                         array(
                                 'key' => 'field_568a29ce83566',
-                                'label' => 'Birth year',
+                                'label' => __('Birth year','wl-wiki-import'),
                                 'name' => 'birthyear',
                                 'type' => 'number',
                                 'instructions' => '',
@@ -223,7 +232,7 @@ class LitteraturnettAuthorFields {
                              ),
                              array(
                                      'key' => 'field_5733f9e2a053a',
-                                     'label' => 'Book first name',
+                                     'label' => __('Book first name','wl-wiki-import'),
                                      'name' => 'book_first_name',
                                      'type' => 'text',
                                      'instructions' => '',
@@ -243,7 +252,7 @@ class LitteraturnettAuthorFields {
                                   ),
                              array(
                                      'key' => 'field_5733f9fda053b',
-                                     'label' => 'Book last name',
+                                     'label' => __('Book last name','wl-wiki-import'),
                                      'name' => 'book_last_name',
                                      'type' => 'text',
                                      'instructions' => '',
@@ -263,7 +272,7 @@ class LitteraturnettAuthorFields {
                                   ),
                              array(
                                      'key' => 'field_5698908f8686d',
-                                     'label' => 'Death year',
+                                     'label' => __('Death year','wl-wiki-import'),
                                      'name' => 'deathyear',
                                      'type' => 'number',
                                      'instructions' => '',
@@ -284,7 +293,7 @@ class LitteraturnettAuthorFields {
                                   ),
                                   array(
                                           'key' => 'field_568b3b5b327a1',
-                                          'label' => 'Genre',
+                                          'label' => __('Genre','wl-wiki-import'),
                                           'name' => 'genre',
                                           'type' => 'checkbox',
                                           'instructions' => '',
@@ -295,17 +304,7 @@ class LitteraturnettAuthorFields {
                                               'class' => '',
                                               'id' => '',
                                               ),
-                                          'choices' => array(
-                                              'Romaner, noveller, fortellinger' => 'Romaner, noveller, fortellinger',
-                                              'Dikt og sanger' => 'Dikt og sanger',
-                                              'Skuespill' => 'Skuespill',
-                                              'Krim' => 'Krim',
-                                              'Barne- og ungdomslitteratur' => 'Barne- og ungdomslitteratur',
-                                              'Sakprosa' => 'Sakprosa',
-                                              'Humor' => 'Humor',
-                                              'Serieforfattere' => 'Serieforfattere',
-                                              'Tegneserieskapere' => 'Tegneserieskapere',
-                                              ),
+                                          'choices' => static::genres(),
                                           'default_value' => array(
                                                   ),
                                           'layout' => 'horizontal',
@@ -316,7 +315,7 @@ class LitteraturnettAuthorFields {
                                           ),
                                           array(
                                                   'key' => 'field_568b3b83327a2',
-                                                  'label' => 'Period',
+                                                  'label' => __('Period','wl-wiki-import'),
                                                   'name' => 'period',
                                                   'type' => 'checkbox',
                                                   'instructions' => '',
@@ -344,7 +343,7 @@ class LitteraturnettAuthorFields {
                                                   ),
                                                   array(
                                                           'key' => 'field_568b3b88327a3',
-                                                          'label' => 'Kommune',
+                                                          'label' => __('Municipality','wl-wiki-import'),
                                                           'name' => 'municipality',
                                                           'type' => 'checkbox',
                                                           'instructions' => 'Ikke hak av fylker, de er work in progress.',
@@ -366,7 +365,7 @@ class LitteraturnettAuthorFields {
                                                               ),
                                                               array(
                                                                       'key' => 'field_58b01b229c99f',
-                                                                      'label' => 'Fylke',
+                                                                      'label' => __('Fylke','wl-wiki-import'),
                                                                       'name' => 'fylke',
                                                                       'type' => 'checkbox',
                                                                       'instructions' => 'Work in progress, ingen funksjon',
@@ -392,7 +391,7 @@ class LitteraturnettAuthorFields {
                                                                       ),
                                                                       array(
                                                                               'key' => 'field_568b3bcf0d81a',
-                                                                              'label' => 'Sections',
+                                                                              'label' => __('Sections','wl-wiki-import'),
                                                                               'name' => 'sections',
                                                                               'type' => 'wysiwyg',
                                                                               'instructions' => '',
@@ -411,7 +410,7 @@ class LitteraturnettAuthorFields {
                                                                            ),
                                                                       array(
                                                                               'key' => 'field_568b6532598ab',
-                                                                              'label' => 'Infobox',
+                                                                              'label' => __('Infobox','wl-wiki-import'),
                                                                               'name' => 'infobox',
                                                                               'type' => 'wysiwyg',
                                                                               'instructions' => '',
@@ -430,7 +429,7 @@ class LitteraturnettAuthorFields {
                                                                            ),
                                                                       array(
                                                                               'key' => 'field_568b6910431b1',
-                                                                              'label' => 'Thumbnail',
+                                                                              'label' => __('Thumbnail','wl-wiki-import'),
                                                                               'name' => 'thumbnail',
                                                                               'type' => 'text',
                                                                               'instructions' => '',
@@ -450,7 +449,7 @@ class LitteraturnettAuthorFields {
                                                                            ),
                                                                       array(
                                                                               'key' => 'field_569da670cc7a1',
-                                                                              'label' => 'Disable book section',
+                                                                              'label' => __('Disable book section','wl-wiki-import'),
                                                                               'name' => 'disable_book_section',
                                                                               'type' => 'true_false',
                                                                               'instructions' => '',
@@ -469,7 +468,7 @@ class LitteraturnettAuthorFields {
                                                                            ),
                                                                       array(
                                                                               'key' => 'field_569f06a4d47b3',
-                                                                              'label' => 'Revid',
+                                                                              'label' => __('Revid','wl-wiki-import'),
                                                                               'name' => 'revid',
                                                                               'type' => 'text',
                                                                               'instructions' => '',
@@ -489,7 +488,7 @@ class LitteraturnettAuthorFields {
                                                                            ),
                                                                       array(
                                                                               'key' => 'field_56c29feedd231',
-                                                                              'label' => 'Auto Update',
+                                                                              'label' => __('Auto Update','wl-wiki-import'),
                                                                               'name' => 'auto_update',
                                                                               'type' => 'true_false',
                                                                               'instructions' => '',
@@ -508,7 +507,7 @@ class LitteraturnettAuthorFields {
                                                                            ),
                                                                       array(
                                                                               'key' => 'field_58dcba3de38da',
-                                                                              'label' => 'Last updated',
+                                                                              'label' => __('Last updated','wl-wiki-import'),
                                                                               'name' => 'author_last_updated',
                                                                               'type' => 'text',
                                                                               'instructions' => '',
