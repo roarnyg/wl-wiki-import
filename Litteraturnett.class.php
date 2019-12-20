@@ -39,7 +39,7 @@ class Litteraturnett {
 		$this->custom_post_types();
 		$this->add_shortcodes();
 		$this->add_author_page_actions();
-		$this->enqueue_styles();
+		add_action('wp_enqueue_scripts', array($this,'enqueue_styles'),5); // Load styles before  theme so theme can overwrite
 		$this->enqueue_scripts();
 		$this->create_topics_hierarchical_taxonomy();
 		add_filter('template_include', array($this,'template_include'),99,1);

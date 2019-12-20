@@ -73,7 +73,7 @@ class LitteraturnettAdvancedSearch {
 		$parts = explode("</form>", $html,2);
 		$newform = $parts[0] . $this->get_advanced_search_form() . "</form>";
 		if (isset($parts[1])) $newform .= $parts[1];
-		return $newform;
+		return "<div class='advanced-search-form-holder'>$newform</div>";
 	}
 
 	protected function get_advanced_search_form() {
@@ -110,7 +110,7 @@ class LitteraturnettAdvancedSearch {
 			</fieldset>
 			</li>
 			</ul>
-			<a href="javascript:void(0)" id="advanceSearchBoxBut"><?php_e("Search",'litteraturnett')?></a>
+			<a href="javascript:void(0)" id="advanceSearchBoxBut"><?php _e("Search",'litteraturnett')?></a>
 			<div class="clear"></div>
 			</div>
 			</div>
@@ -139,13 +139,9 @@ class LitteraturnettAdvancedSearch {
 				continue;
 			}
 
-			if ($fieldId == 'gender') {
-				error_log("option $optionKey - $optionValue");
-			}
 			$checked = isset( $currentFieldValue) && in_array($optionKey,$currentFieldValue) ? ' checked ' : '';
 			$result .='<p><input type="checkbox" name="'.$checkboxName.'[]" value="'.$optionKey.'" id="'.$checkboxIdPrefix.$index.'" ' . $checked. ' /> <label for="'.$checkboxIdPrefix.$index.'">'.$optionValue.'</label></p>';
 			$index++;
-			if ($fieldId == 'gender') error_log("Index $index");
 		}
 		return $result;
 	}

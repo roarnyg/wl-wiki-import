@@ -33,14 +33,17 @@
                 }
             });
         });
-        jQuery("#searchsubmit").click(function(e){
-            if(!jQuery("#s").val()){
-                jQuery("#s").val(" ");
+        // Integrate advanced features on search submit
+        jQuery(".advanced-search-form-holder form").submit(function(e){
+            var searchfield = jQuery(this).find('input[name="s"]');
+            if(!searchfield.val()){
+                searchfield.val(" ");
             }
             if(jQuery("#advanceSearchContent").is(":hidden")){
                 jQuery("#municipalitySelectSearch").val("");
                 jQuery("#advanceSearchContent input[type=checkbox").prop("checked",false);
             }
+            return true;
         });
         jQuery("#checkAllBut").each(function(){
             if(jQuery("#advanceSearchContent>ul input[type=checkbox]").not(":selected").length==0){
@@ -59,7 +62,7 @@
             });
         });
         jQuery("#advanceSearchBoxBut").click(function(){
-            jQuery("#searchsubmit").click();
+            jQuery(this).closest(".advanced-search-form-holder").find('form').submit();
         });
     }
     var _styleSelectbox = function(){
