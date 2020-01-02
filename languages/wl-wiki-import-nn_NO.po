@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: WL Wikipedia Import og Forfatterdatabase\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-20 18:54+0000\n"
-"PO-Revision-Date: 2019-12-20 18:56+0000\n"
-"Last-Translator: muadmin <support@wp-hosting.no>\n"
+"PO-Revision-Date: 2020-01-02 13:25+0000\n"
+"Last-Translator: Kjell Nilsen <kjenil@nfk.no>\n"
 "Language-Team: Norwegian (Nynorsk)\n"
-"Language: nn_NO\n"
+"Language: nn-NO\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,52 +16,52 @@ msgstr ""
 
 #: LitteraturnettWikiImport.class.php:47
 msgid "Wiki API Import"
-msgstr ""
+msgstr "Wiki API Import"
 
 #: LitteraturnettWikiImport.class.php:114
 msgid "Import from Wikipedia : "
-msgstr ""
+msgstr "Importer frå Wikipedia:"
 
 #: LitteraturnettWikiImport.class.php:119
 msgid "Search : "
-msgstr ""
+msgstr "Søk:"
 
 #: LitteraturnettWikiImport.class.php:133
 msgid "Search Type: "
-msgstr ""
+msgstr "Søkjetype"
 
 #: LitteraturnettWikiImport.class.php:135
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: LitteraturnettWikiImport.class.php:136
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
 #: LitteraturnettWikiImport.class.php:137
 msgid "Sub categories"
-msgstr ""
+msgstr "Underkategoriar"
 
 #: LitteraturnettWikiImport.class.php:138
 msgid "Advance search"
-msgstr ""
+msgstr "Avansert søk"
 
-#: LitteraturnettWikiImport.class.php:143
+#: LitteraturnettWikiImport.class.php:143 
 #: LitteraturnettAdvancedSearch.class.php:113
 msgid "Search"
-msgstr ""
+msgstr "Søk"
 
 #: LitteraturnettWikiImport.class.php:155
 msgid "Select All"
-msgstr ""
+msgstr "Vel alle"
 
 #: LitteraturnettWikiImport.class.php:156
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #: LitteraturnettWikiImport.class.php:657
 msgid "Cannot update the 'last updated' page as it does not exist"
-msgstr ""
+msgstr "Kan ikkje oppdatere \"sist oppdatert\"-sida - den finst ikkje"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Romaner, noveller, fortellinger"
@@ -93,30 +93,32 @@ msgstr "Humor"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Serieforfattere"
-msgstr "Serieforfattere"
+msgstr "Serieforfattarar"
 
 #: LitteraturnettAuthorFields.class.php:25
 msgid "Tegneserieskapere"
-msgstr "Tegneserieskapere"
+msgstr "Teikneserieskaparar"
 
 #: LitteraturnettAuthorFields.class.php:69
 msgid "Author Fields"
-msgstr ""
+msgstr "Forfattarfelt"
 
 #: LitteraturnettAuthorFields.class.php:97
 msgid ""
 "Fields used for the authors. Do not edit, these are managed by the "
 "Litteraturnett plugin"
 msgstr ""
+"Felter som brukes for \"Forfattar\"-objekta. Ikke rediger her, disse blir "
+"handsama av pluginen."
 
 #: LitteraturnettAuthorFields.class.php:108
 msgid "Local content"
-msgstr ""
+msgstr "Lokalt innhald"
 
-#: LitteraturnettAuthorFields.class.php:147
+#: LitteraturnettAuthorFields.class.php:147 
 #: LitteraturnettAdvancedSearch.class.php:102
 msgid "Gender"
-msgstr ""
+msgstr "Kjønn"
 
 #: LitteraturnettAuthorFields.class.php:160
 msgid "Men"
@@ -128,130 +130,130 @@ msgstr "Einskildkvinner"
 
 #: LitteraturnettAuthorFields.class.php:174
 msgid "First name"
-msgstr ""
+msgstr "Fornamn"
 
 #: LitteraturnettAuthorFields.class.php:194
 msgid "Last name"
-msgstr ""
+msgstr "Etternamn"
 
 #: LitteraturnettAuthorFields.class.php:214
 msgid "Birth year"
-msgstr ""
+msgstr "Fødselsår"
 
 #: LitteraturnettAuthorFields.class.php:235
 msgid "Book first name"
-msgstr ""
+msgstr "Bok fornavn"
 
 #: LitteraturnettAuthorFields.class.php:255
 msgid "Book last name"
-msgstr ""
+msgstr "Bok etternavn"
 
 #: LitteraturnettAuthorFields.class.php:275
 msgid "Death year"
-msgstr ""
+msgstr "Dødsår"
 
-#: LitteraturnettAuthorFields.class.php:296
+#: LitteraturnettAuthorFields.class.php:296 
 #: LitteraturnettAdvancedSearch.class.php:90
 msgid "Genre"
-msgstr ""
+msgstr "Sjanger"
 
 #: LitteraturnettAuthorFields.class.php:318
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
-#: LitteraturnettAuthorFields.class.php:346
+#: LitteraturnettAuthorFields.class.php:346 
 #: LitteraturnettAdvancedSearch.class.php:108
 msgid "Municipality"
-msgstr ""
+msgstr "Kommune"
 
 #: LitteraturnettAuthorFields.class.php:368
 msgid "Fylke"
-msgstr ""
+msgstr "Fylke"
 
 #: LitteraturnettAuthorFields.class.php:394
 msgid "Sections"
-msgstr ""
+msgstr "Seksjonar"
 
 #: LitteraturnettAuthorFields.class.php:413
 msgid "Infobox"
-msgstr ""
+msgstr "Infoboks"
 
 #: LitteraturnettAuthorFields.class.php:432
 msgid "Thumbnail"
-msgstr ""
+msgstr "Thumbnailbilete"
 
 #: LitteraturnettAuthorFields.class.php:452
 msgid "Disable book section"
-msgstr ""
+msgstr "Skru av bokseksjon"
 
 #: LitteraturnettAuthorFields.class.php:471
 msgid "Revid"
-msgstr ""
+msgstr "Revid"
 
 #: LitteraturnettAuthorFields.class.php:491
 msgid "Auto Update"
-msgstr ""
+msgstr "Autooppdater"
 
 #: LitteraturnettAuthorFields.class.php:510
 msgid "Last updated"
-msgstr ""
+msgstr "Sist oppdatert"
 
 #: LitteraturnettAuthorShortcode.class.php:45
 msgid "period"
-msgstr ""
+msgstr "periode"
 
 #: LitteraturnettAuthorShortcode.class.php:50
 msgid "gerne"
-msgstr ""
+msgstr "sjanger"
 
 #: LitteraturnettAuthorShortcode.class.php:210
 msgid "Last searched authors"
-msgstr ""
+msgstr "Siste søkte forfattarar"
 
 #: LitteraturnettAuthorPageController.class.php:29
 msgid "This page uses material from"
-msgstr ""
+msgstr "Denne sida brukar materiale frå"
 
 #: LitteraturnettAuthorPageController.class.php:29
 msgid "licensed under"
-msgstr ""
+msgstr "lisensiert under"
 
 #: LitteraturnettAuthorPageController.class.php:149
 msgid "Do you have information to add?"
-msgstr ""
+msgstr "Har du informasjon å leggje til?"
 
 #: LitteraturnettAuthorPageController.class.php:170
 msgid "Tags"
-msgstr ""
+msgstr "Emneord"
 
 #: LitteraturnettAdvancedSearch.class.php:84
 msgid "Advanced search"
-msgstr ""
+msgstr "Avansert søk"
 
 #: LitteraturnettAdvancedSearch.class.php:86
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: LitteraturnettAdvancedSearch.class.php:86
 msgid "Check / Uncheck all"
-msgstr ""
+msgstr "Kryss av/på alle"
 
 #: LitteraturnettAdvancedSearch.class.php:96
 msgid "Birthyear"
-msgstr ""
+msgstr "Fødselsår"
 
-#: LitteraturnettAdvancedSearch.class.php:151
+#: LitteraturnettAdvancedSearch.class.php:151 
 #: LitteraturnettAdvancedSearch.class.php:171
 msgid "Choose municipality"
-msgstr ""
+msgstr "Vel kommune"
 
 #: LitteraturnettAdvancedSearch.class.php:159
 msgid "Choose a region"
-msgstr ""
+msgstr "Vel region"
 
 #: Litteraturnett.class.php:24
 msgid "Dynamic string"
-msgstr ""
+msgstr "Dynamisk tekst"
 
 #: Litteraturnett.class.php:25
 msgid "Norge"
@@ -264,202 +266,202 @@ msgstr "Noreg"
 #: Litteraturnett.class.php:72
 msgctxt "taxonomy general name"
 msgid "Wiki category groups"
-msgstr ""
+msgstr "Wiki-kategorigrupper"
 
 #: Litteraturnett.class.php:73
 msgctxt "taxonomy singular name"
 msgid "Wiki category group"
-msgstr ""
+msgstr "Wiki-kategorigruppe"
 
 #: Litteraturnett.class.php:74
 msgid "Search groups"
-msgstr ""
+msgstr "Søk grupper"
 
 #: Litteraturnett.class.php:75
 msgid "All groups"
-msgstr ""
+msgstr "Alle grupper"
 
 #: Litteraturnett.class.php:76
 msgid "Parent group"
-msgstr ""
+msgstr "Foreldregruppe"
 
 #: Litteraturnett.class.php:77
 msgid "Parent group:"
-msgstr ""
+msgstr "Foreldregruppe:"
 
 #: Litteraturnett.class.php:78
 msgid "Edit group"
-msgstr ""
+msgstr "Rediger gruppe"
 
 #: Litteraturnett.class.php:79
 msgid "Update group"
-msgstr ""
+msgstr "Oppdater gruppe"
 
 #: Litteraturnett.class.php:80
 msgid "Add New group"
-msgstr ""
+msgstr "Legg til ny gruppe"
 
 #: Litteraturnett.class.php:81
 msgid "New group Name"
-msgstr ""
+msgstr "Nytt gruppenamn"
 
 #: Litteraturnett.class.php:82
 msgid "Wiki category groups"
-msgstr ""
+msgstr "Wiki-kategorigruppe"
 
 #: Litteraturnett.class.php:106
 msgid "By"
-msgstr ""
+msgstr "Av"
 
 #: Litteraturnett.class.php:107
 msgid "Source"
-msgstr ""
+msgstr "Kjelde"
 
 #: Litteraturnett.class.php:187
 msgid "Wikipedia Import"
-msgstr ""
+msgstr "Wikipedia-import"
 
 #: Litteraturnett.class.php:196
 msgid "Update from Wikipedia"
-msgstr ""
+msgstr "Oppdater frå Wikipedia"
 
 #: Litteraturnett.class.php:197
 msgid "Updating..."
-msgstr ""
+msgstr "Oppdaterar..."
 
 #: Litteraturnett.class.php:257 Litteraturnett.class.php:357
 msgid "Litteraturnett"
-msgstr ""
+msgstr "Litteraturnett"
 
 #: Litteraturnett.class.php:268
 msgctxt "Post Type General Name"
 msgid "Authors"
-msgstr ""
+msgstr "Forfattarar"
 
 #: Litteraturnett.class.php:269
 msgctxt "Post Type Singular Name"
 msgid "Author"
-msgstr ""
+msgstr "Forfattar"
 
 #: Litteraturnett.class.php:270 Litteraturnett.class.php:304
 msgid "Authors"
-msgstr ""
+msgstr "Forfattarar"
 
 #: Litteraturnett.class.php:271 Litteraturnett.class.php:303
 msgid "Author"
-msgstr ""
+msgstr "Forfattar"
 
 #: Litteraturnett.class.php:272
 msgid "Author Archives"
-msgstr ""
+msgstr "Forfattararkiv"
 
 #: Litteraturnett.class.php:273
 msgid "Author Attributes"
-msgstr ""
+msgstr "Forfattarattributt"
 
 #: Litteraturnett.class.php:274
 msgid "Parent Item:"
-msgstr ""
+msgstr "Forelder:"
 
 #: Litteraturnett.class.php:275
 msgid "All Authors"
-msgstr ""
+msgstr "Alle forfattarar"
 
 #: Litteraturnett.class.php:276
 msgid "Add New Author"
-msgstr ""
+msgstr "Ny forfattar"
 
 #: Litteraturnett.class.php:277
 msgid "Add New"
-msgstr ""
+msgstr "Legg til ny"
 
 #: Litteraturnett.class.php:278
 msgid "New Author"
-msgstr ""
+msgstr "Ny forfattar"
 
 #: Litteraturnett.class.php:279
 msgid "Edit Author"
-msgstr ""
+msgstr "Rediger forfattar"
 
 #: Litteraturnett.class.php:280
 msgid "Update Author"
-msgstr ""
+msgstr "Oppdater forfattar"
 
 #: Litteraturnett.class.php:281
 msgid "View Author"
-msgstr ""
+msgstr "Sjå forfattar"
 
 #: Litteraturnett.class.php:282
 msgid "View Authors"
-msgstr ""
+msgstr "Sjå forfattarar"
 
 #: Litteraturnett.class.php:283
 msgid "Search Authors"
-msgstr ""
+msgstr "Søk forfattarar"
 
 #: Litteraturnett.class.php:284
 msgid "Not found"
-msgstr ""
+msgstr "Ikkje funnen"
 
 #: Litteraturnett.class.php:285
 msgid "Not found in Trash"
-msgstr ""
+msgstr "Ikkje funnen i sletta"
 
 #: Litteraturnett.class.php:286
 msgid "Featured Image"
-msgstr ""
+msgstr "Fremheva bilete"
 
 #: Litteraturnett.class.php:287
 msgid "Set featured image"
-msgstr ""
+msgstr "Set fremheva bilete"
 
 #: Litteraturnett.class.php:288
 msgid "Remove featured image"
-msgstr ""
+msgstr "Ta bort fremheva bilete"
 
 #: Litteraturnett.class.php:289
 msgid "Use as featured image"
-msgstr ""
+msgstr "Bruk som fremheva bilete"
 
 #: Litteraturnett.class.php:290
 msgid "Insert into item"
-msgstr ""
+msgstr "Set inn i artikkel"
 
 #: Litteraturnett.class.php:291
 msgid "Uploaded to this item"
-msgstr ""
+msgstr "Lasta opp til denne artikkelen"
 
 #: Litteraturnett.class.php:292
 msgid "Items list"
-msgstr ""
+msgstr "Artikkeliste"
 
 #: Litteraturnett.class.php:293
 msgid "Author list navigation"
-msgstr ""
+msgstr "Forfattarlistenavigering"
 
 #: Litteraturnett.class.php:294
 msgid "Filter authors list"
-msgstr ""
+msgstr "Filtrer forfattarlista"
 
 #: Litteraturnett.class.php:341
 msgid "Insufficient privileges"
-msgstr ""
+msgstr "Ikkje tilstrekkelege rettar"
 
 #: Litteraturnett.class.php:366
 msgid "Wikipedia Source"
-msgstr ""
+msgstr "Wikipediakjelde"
 
 #: Litteraturnett.class.php:369 Litteraturnett.class.php:382
 msgid "Select one"
-msgstr ""
+msgstr "Vel ein"
 
 #: Litteraturnett.class.php:375
 msgid "Select the Wikipedia you will use as a source for this site."
-msgstr ""
+msgstr "Vel kva for Wikipedia du vil bruke som kjelde for denne nettstaden"
 
 #: Litteraturnett.class.php:379
 msgid "Region"
-msgstr ""
+msgstr "Region"
 
 #: Litteraturnett.class.php:388
 msgid ""
@@ -467,41 +469,47 @@ msgid ""
 "this site. This can be overridden with the <code>"
 "litteraturnett_regions</code> filter.."
 msgstr ""
+"Vel din region; dette vil avgjere kva for kommunar som er tilletne hjå denne "
+"nettstaden. Dette kan overstyrast med filteret <code>"
+"litteraturnett_regions</code>"
 
 #: Litteraturnett.class.php:394
 msgid "Last updated page"
-msgstr ""
+msgstr "Siste oppdaterte side"
 
 #: Litteraturnett.class.php:396
 msgid "None chosen"
-msgstr ""
+msgstr "Ingen vald"
 
 #: Litteraturnett.class.php:398
 msgid ""
 "Select an (empty! and probably private) page to be used to show last updated "
 "authors"
 msgstr ""
+"Vel ein (tom! og helst privat kanskje) side som brukast til å vise siste "
+"oppdaterte forfattarar"
 
 #: Litteraturnett.class.php:452 Litteraturnett.class.php:458
 msgid "Last Updated"
-msgstr ""
+msgstr "Sist oppdatert"
 
 #. Name of the plugin
 msgid "WL Wikipedia Import og Forfatterdatabase"
-msgstr ""
+msgstr "WL Wikipedia Import og Forfatterdatabase"
 
 #. Description of the plugin
 msgid "Create and manage a database of authors based on wikipedia information"
 msgstr ""
+"Lag og handsam ei database av forfattarar basert på informasjon frå Wikipedia"
 
 #. URI of the plugin
 msgid "https://wordpress.org/plugins/wl-wiki-import/"
-msgstr ""
+msgstr "https://wordpress.org/plugins/wl-wiki-import/"
 
 #. Author of the plugin
 msgid "WP Hosting"
-msgstr ""
+msgstr "WP Hosting"
 
 #. Author URI of the plugin
 msgid "https://www.wp-hosting.no/"
-msgstr ""
+msgstr "https://www.wp-hosting.no/"
