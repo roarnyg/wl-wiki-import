@@ -44,7 +44,7 @@ class LitteraturnettWikiImport {
     }
 
     function wiki_api_admin_default_setup() {
-        add_options_page(__('Wiki API Import', 'wl-wiki-import'), __('Wiki API Import', 'wl-wiki-import'), 'manage_options', 'wiki_api_import_default_form', array($this,'wiki_api_import_default_form'));
+        add_submenu_page('edit.php?post_type=author',__('Import from Wikipedia', 'wl-wiki-import'), __('Import from Wikipedia', 'wl-wiki-import'), 'manage_options', 'wiki_api_import_default_form', array($this,'wiki_api_import_default_form'));
     }
 
     /**
