@@ -10,7 +10,7 @@ class LitteraturnettAuthorShortcode {
     protected static $instance = null;
 
     static public function add () {
-          if (!$instance) static::$instance = new LitteraturnettAuthorShortcode();
+          if (!static::$instance) static::$instance = new LitteraturnettAuthorShortcode();
           add_shortcode( 'authors', array(static::$instance,'generate_authorList' ));
     }
 
