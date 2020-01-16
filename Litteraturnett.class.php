@@ -197,12 +197,13 @@ class Litteraturnett {
 		$updating = __("Updating...", 'wl-wiki-import');
 		$pageid = get_field('page_id');
 		$lastupdated = get_field('author_last_updated');
+                if ($pageid):
 		?>
 			<div id="wl-wikipedia-actions" style="overflow:hidden;width: 100%; text-align:center">
 			<div id="wl-wikipedia-action" style="margin:0 auto">
 
 			<p>Page id <?php echo intval($pageid); ?> Last updated <?php echo esc_html($lastupdated) ;?></p>
-			<a href="javascript:updateFromWikipedia(<?php echo intval($pageid); ?>)" accesskey="p" tabindex="5" class="button-primary wikipedia-import-button"><?php echo $label; ?></a>
+			<a href="javascript:updateFromWikipedia(<?php echo intval($pageid); ?>);" accesskey="p" tabindex="5" class="button-primary wikipedia-import-button"><?php echo $label; ?></a>
 			<p class="wikiimportresult"></p>
 			</div></div>
 			<script>
@@ -211,7 +212,7 @@ class Litteraturnett {
 			if (!pageid) {
 				jQuery('.wikiimportresult').html('');
 				alert("No page id - cannot import!");
-				return false;
+				return;
 			}
 			function reset () {
 				wlimportinprogress = 0;
@@ -244,6 +245,9 @@ reset();
 });
 } 
 </script>
+               <?php else: ?>
+                     <?php _e('Page was not imported from Wikipedia', 'wl-wiki-import'); ?>
+               <?php endif; ?>
 
 <?php
 return 1;
