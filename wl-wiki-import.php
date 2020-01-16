@@ -35,6 +35,22 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
+// Only be active if Woocommerce is active, either on site or network activated IOK 2018-08-29
+$activeplugins =  apply_filters( 'active_plugins', get_option( 'active_plugins' ));
+$activesiteplugins = apply_filters('active_sitewide_plugins', get_site_option('active_sitewide_plugins'));
+if ($activesiteplugins) {
+ $activeplugins = array_merge($activeplugins,array_keys($activesiteplugins));
+}
+
+if (!in_array( 'advanced-custom-fields/acf.php', $activeplugins) &&
+     !in_array( 'advanced-custom-fields-pro/acf.php', $activeplugins)):
+
+ add_action( 'admin_notices', function () {
+    $message = "WL Wikipedia Import og Forfatterdatabase requires the Advanced Custom Fields plugin to work. Please install this before activating the plugin.";
+    printf( '<div class="%1$s"><p>%2$s</p></div>','notice notice-error',esc_html($message));
+ });
+
+else:
 
 require_once("LitteraturnettRegions.class.php");
 require_once("LitteraturnettAuthorFields.class.php");
@@ -77,4 +93,4 @@ $LitteraturnettAdvancedSearch = LitteraturnettAdvancedSearch::instance();
 add_action('init',array($LitteraturnettAdvancedSearch,'init'));
 add_action('admin_init',array($LitteraturnettAdvancedSearch,'init'));
 
-
+endif;
