@@ -237,6 +237,7 @@ class LitteraturnettWikiImport {
             $query['pllimit']	  = 500; //increases the limit of links to show to 500
 
             $resultAPI = $this->wiki_api_curl('GET', $query);
+
             $data = json_decode($resultAPI, true);
 
             if (empty($data)) {
@@ -529,7 +530,7 @@ class LitteraturnettWikiImport {
 
                     $tags = array();
                     $municipalityList = get_field('municipality', $post_id);
-                    if ($municipalityList == "") {
+                    if (!$municipalityList) {
                         $municipalityList = array();
                     }
 
@@ -545,7 +546,7 @@ class LitteraturnettWikiImport {
 
                     //Try to add missing category to current
                     foreach($categories_data as $cat){
-                        if(isset($cat['hidden']) ){ continue; };
+                        if(isset($cat['hidden']) && $cat['hidden']){ continue; };
                         $cate_name = str_replace("_"," ",$cat['*']);
                         $cate_name = 'Kategori:'. $cate_name;
 
@@ -564,12 +565,15 @@ class LitteraturnettWikiImport {
                         if (array_key_exists($subject, $wikiCategoryGroup)) {
                             $subject = $wikiCategoryGroup[$subject];
                         }
+
                         $tags []= $subject;
                         //Update other field
                         if (($subject == $wikidata['WIKIPEDIA_TERM_MALE']) || ($subject == $wikidata['WIKIPEDIA_TERM_FEMALE'])) {
                             update_field('gender', $subject, $post_id);
                             continue;
                         }
+
+
                         preg_match('/' . $wikidata['WIKIPEDIA_TERM_MUNICIPALITY'] . '/', $subject, $municipalityMatches);
                         if (count($municipalityMatches) > 1) {
                             array_push($municipalityList, $municipalityMatches[1]);
@@ -594,7 +598,7 @@ class LitteraturnettWikiImport {
                     }
 
                     if (count($municipalityList) > 0) {
-                        update_field('municipality', serialize($municipalityList), $post_id);
+                        update_field('municipality', $municipalityList, $post_id);
                     }
 
 
